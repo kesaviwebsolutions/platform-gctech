@@ -51,7 +51,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  ${usdmmarketcap}
+                  ${Number(usdmmarketcap).toFixed(0)}
                   <MDBBadge color="danger" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 27.02% */}
                   </MDBBadge>
@@ -95,7 +95,8 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  $4,42,236
+                  $
+                  {xaustousd}
                   <MDBBadge color="success" className="mx-2">
                     <MDBIcon fas icon="chart-line" /> 59.32%
                   </MDBBadge>
@@ -114,7 +115,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  $78,250
+                  ${usdmtousdt}
                   <MDBBadge color="success" className="mx-2">
                     <MDBIcon fas icon="chart-line" /> 70.32%
                   </MDBBadge>
@@ -133,7 +134,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  $35,078
+                  ${gcstousd}
                   <MDBBadge color="danger" className="mx-2">
                     <MDBIcon fas icon="chart-line" /> 27.02%
                   </MDBBadge>
@@ -158,7 +159,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  $4,42,236
+                  {Number(gcsusdm).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 59.32% */}
                   </MDBBadge>
@@ -177,7 +178,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  $78,250
+                  {Number(1/xaustogcs).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 70.32% */}
                   </MDBBadge>
@@ -196,7 +197,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  $35,078
+                  {Number(1/xaustousdm).toFixed(5)}
                   <MDBBadge color="danger" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 27.02% */}
                   </MDBBadge>
