@@ -54,33 +54,32 @@ function App() {
           console.log(error);
         });
 
-        let headersXau = {
-          "x-access-token": "goldapi-6vbttl4viue6x-io",
-          "Content-Type": "application/json",
-        };
-    
-        let xauOptions = {
-          url: "https://www.goldapi.io/api/XAU/USD",
-          method: "GET",
-          headers: headersXau,
-        };
-        const xau = await axios.request(xauOptions).then(function (response) {
-          return response.data.price
-        });
+      let headersXau = {
+        "x-access-token": "goldapi-6vbttl4viue6x-io",
+        "Content-Type": "application/json",
+      };
 
-        let headersList = {
-          Accept: "*/*",
-          "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-        };
-        let reqOptions = {
-          url: "https://api.exchangerate.host/convert?from=USD&to=CNH",
-          method: "GET",
-          headers: headersList,
-        };
-        const btwo = await axios.request(reqOptions).then(function (response) {
-          return Number(response.data.info.rate).toFixed(5)
-        });
-  
+      let xauOptions = {
+        url: "https://www.goldapi.io/api/XAU/USD",
+        method: "GET",
+        headers: headersXau,
+      };
+      const xau = await axios.request(xauOptions).then(function (response) {
+        return response.data.price;
+      });
+
+      let headersList = {
+        Accept: "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      };
+      let reqOptions = {
+        url: "https://api.exchangerate.host/convert?from=USD&to=CNH",
+        method: "GET",
+        headers: headersList,
+      };
+      const btwo = await axios.request(reqOptions).then(function (response) {
+        return Number(response.data.info.rate).toFixed(5);
+      });
 
       Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo);
     };
@@ -92,18 +91,26 @@ function App() {
     const gcstousd = closeprice;
     const gcsusdm = (mmk * closeprice) / govt;
     const xaustousd = ((xau / 31.1025) * 0.425 * 1.03).toFixed(5);
-    const xausmk = Number((xaus)*(((xau / 31.1025) * 0.425 * 1.03).toFixed(5))).toFixed(0)
-    const usdmtousdt = Number(closeprice/gcsusdm).toFixed(5)
-    const usdmmk = 755030 * closeprice
-    const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03)/gcstousd).toFixed(5)
-    const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03)/(3 / btwo)).toFixed(5)
+    const xausmk = Number(
+      xaus * ((xau / 31.1025) * 0.425 * 1.03).toFixed(5)
+    ).toFixed(0);
+    const usdmtousdt = Number(closeprice / gcsusdm).toFixed(5);
+    const usdmmk = 755030 * closeprice;
+    const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03) / gcstousd).toFixed(5);
+
+    const xaustousdm = Number(
+      ((xau / 31.1025) * 0.425 * 1.03) / (3 / btwo)
+    ).toFixed(5);
+
+    // const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03)/(3 / bTwo)).toFixed(5)
+    // console.log("gcs market"+gcsmk+" gcstousd"+gcstousd+" gcsusdm"+gcsusdm)
   };
 
   return (
     <div className="App">
       <Navbar />
       <Main />
-      <Swap/>
+      <Swap />
     </div>
   );
 }
