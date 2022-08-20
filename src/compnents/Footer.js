@@ -1,66 +1,24 @@
-import React, { useState } from "react";
-import {
-  MDBContainer,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarToggler,
-  MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBDropdownLink,
-  MDBCollapse,
-} from "mdb-react-ui-kit";
+import React from "react";
+import {MDBContainer} from "mdb-react-ui-kit";
+import { Box, Link, Typography } from "@mui/material";
+import { MDBIcon } from "mdb-react-ui-kit";
+
 
 export default function Footer() {
-  const [showBasic, setShowBasic] = useState(false);
   return (
     <>
-      <MDBNavbar expand="lg" light bgColor="transparent">
-        <MDBContainer fluid>
-          <MDBNavbarBrand href="#">Brand</MDBNavbarBrand>
-
-          <MDBNavbarToggler
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            onClick={() => setShowBasic(!showBasic)}
-          >
-            <MDBIcon icon="bars" fas />
-          </MDBNavbarToggler>
-
-          <MDBCollapse navbar show={showBasic}>
-            <MDBNavbarNav className="mr-auto mb-2 mb-lg-0 justify-content-center">
-              <MDBNavbarItem>
-                <MDBNavbarLink aria-current="page" href="#">
-                  HOME
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="#">STAKING</MDBNavbarLink>
-              </MDBNavbarItem>
-
-              <MDBNavbarItem>
-                <MDBNavbarLink href="#">ADMIN</MDBNavbarLink>
-              </MDBNavbarItem>
-            </MDBNavbarNav>
-
-            {/* <MDBInputGroup tag="form" className="d-flex w-auto mb-3">
-            <input
-              className="form-control"
-              placeholder="Type query"
-              aria-label="Search"
-              type="Search"
-            />
-            <MDBBtn outline>Search</MDBBtn>
-          </MDBInputGroup> */}
-          </MDBCollapse>
-        </MDBContainer>
-      </MDBNavbar>
+      <MDBContainer fluid>
+        <Box className="footer-area">
+          <Typography variant="h6" style={{border:"1px solid #F144EC", width:"100px", background:"#F144EC", color:"#fff", textAlign:"center", margin:"20px 0px"}}><Link to="/">AUDIT</Link></Typography>
+          <Typography variant="h6" className="mx-5" style={{border:"1px solid #00C851", width:"100px", background:"#00C851", color:"#fff", textAlign:"center",margin:"20px 0px"}}><Link to="/">KYC</Link></Typography>
+        </Box>
+        <Box>
+            <Typography paragraph  className="text-center">
+            <MDBIcon fas icon="copyright"/> By Platform-Gctech
+            </Typography>
+            <Typography  paragraph  className="text-center my-2">Designed & Developed BY KWS</Typography>
+        </Box>
+      </MDBContainer>
     </>
   );
 }

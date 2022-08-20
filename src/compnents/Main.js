@@ -8,10 +8,20 @@ import {
 } from "mdb-react-ui-kit";
 import { Grid } from "@mui/material";
 import { MDBBadge } from "mdb-react-ui-kit";
-import { MDBIcon } from "mdb-react-ui-kit";
+import { BiLineChartDown, BiLineChart } from "react-icons/bi";
 import { Container } from "@mui/system";
 
-export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, usdmtousdt, usdmmarketcap, xaustogcs, xaustousdm}) {
+export default function Main({
+  gcsmaketcap,
+  gcstousd,
+  gcsusdm,
+  xaustousd,
+  xausmk,
+  usdmtousdt,
+  usdmmarketcap,
+  xaustogcs,
+  xaustousdm,
+}) {
   return (
     <>
       <Container maxWidth="lg" minwidth="md">
@@ -20,7 +30,6 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
           spacing={2}
           sx={{ marginTop: "20px", padding: "10px 20px" }}
         >
-   
           <Grid item xs={12} sm={12} md={6} xl={4}>
             <MDBCard>
               <MDBCardBody>
@@ -95,10 +104,9 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  $
-                  {xaustousd}
+                  ${xaustousd}
                   <MDBBadge color="success" className="mx-2">
-                    <MDBIcon fas icon="chart-line" /> 59.32%
+                    <BiLineChart size={20}/> 59.32%
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -117,7 +125,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                 >
                   ${usdmtousdt}
                   <MDBBadge color="success" className="mx-2">
-                    <MDBIcon fas icon="chart-line" /> 70.32%
+                    <BiLineChart size={20}/> 70.32%
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -136,7 +144,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                 >
                   ${gcstousd}
                   <MDBBadge color="danger" className="mx-2">
-                    <MDBIcon fas icon="chart-line" /> 27.02%
+                    <BiLineChartDown size={20}/> 27.02%
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -161,7 +169,7 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                 >
                   {Number(gcsusdm).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
-                    {/* <MDBIcon fas icon="chart-line" /> 59.32% */}
+                    <BiLineChart size={20}/> 59.32%
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -178,9 +186,9 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  {Number(1/xaustogcs).toFixed(5)}
+                  {Number(1 / xaustogcs).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
-                    {/* <MDBIcon fas icon="chart-line" /> 70.32% */}
+                    <BiLineChart size={20}/> 70.32%
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -197,9 +205,9 @@ export default function Main({gcsmaketcap, gcstousd, gcsusdm, xaustousd,xausmk, 
                     fontSize: "20px",
                   }}
                 >
-                  {Number(1/xaustousdm).toFixed(5)}
+                  {Number(1 / xaustousdm).toFixed(5)}
                   <MDBBadge color="danger" className="mx-2">
-                    {/* <MDBIcon fas icon="chart-line" /> 27.02% */}
+                    <BiLineChartDown size={20}/> 27.02%
                   </MDBBadge>
                 </h4>
               </MDBCardBody>

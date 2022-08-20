@@ -8,13 +8,11 @@ import {
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBDropdownLink,
   MDBCollapse,
+  MDBCardImage,
 } from "mdb-react-ui-kit";
+import meta from "../images/meta.png";
+import connect from "../images/connect.svg";
 
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
@@ -36,35 +34,112 @@ export default function App() {
 
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0 justify-content-center">
-            <MDBNavbarItem onClick={()=>setActive(1)}>
+            <MDBNavbarItem onClick={() => setActive(1)}>
               <MDBNavbarLink
                 aria-current="page"
                 href="#"
-                className={active===1 ? 'active' : ""}
+                className={active === 1 ? "active" : ""}
               >
                 HOME
               </MDBNavbarLink>
             </MDBNavbarItem>
-            <MDBNavbarItem onClick={()=>setActive(2)}>
-              <MDBNavbarLink href="#" className={active===2 ? 'active' : ""}>STAKING</MDBNavbarLink>
+            <MDBNavbarItem onClick={() => setActive(2)}>
+              <MDBNavbarLink href="#" className={active === 2 ? "active" : ""}>
+                STAKING
+              </MDBNavbarLink>
             </MDBNavbarItem>
 
-            <MDBNavbarItem onClick={()=>{setActive(3);}}>
-              <MDBNavbarLink href="#" className={active===3 ? 'active' : ""}>ADMIN</MDBNavbarLink>
+            <MDBNavbarItem
+              onClick={() => {
+                setActive(3);
+              }}
+            >
+              <MDBNavbarLink href="#" className={active === 3 ? "active" : ""}>
+                ADMIN
+              </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
+          <button
+            type="button"
+            className="connectButton"
+            data-mdb-toggle="modal"
+            data-mdb-target="#exampleModal"
+          >
+            Connect Wallet
+          </button>
 
-          {/* <MDBInputGroup tag="form" className="d-flex w-auto mb-3">
-            <input
-              className="form-control"
-              placeholder="Type query"
-              aria-label="Search"
-              type="Search"
-            />
-            <MDBBtn outline>Search</MDBBtn>
-          </MDBInputGroup> */}
+          {/* <div className="dropdown">
+            <button
+              className="dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              xaddd..tr
+            </button>
+            <ul
+              className="dropdown-menu disconnect"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <li>Disconnect</li>
+            </ul>
+          </div> */}
         </MDBCollapse>
       </MDBContainer>
+
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className=" modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5
+                className="modal-title ms-auto fw-bold"
+                id="exampleModalLabel"
+              >
+                Please Connect Your Wallet
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-mdb-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body d-flex justify-content-evenly align-items-center">
+              <MDBCardImage
+                src={meta}
+                position="top"
+                alt="..."
+                style={{ width: "100px", cursor: "pointer" }}
+              />
+              <MDBCardImage
+                src={connect}
+                position="top"
+                alt="..."
+                style={{ width: "70px", cursor: "pointer" }}
+              />
+            </div>
+            {/* <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-mdb-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div> */}
+          </div>
+        </div>
+      </div>
     </MDBNavbar>
   );
 }
