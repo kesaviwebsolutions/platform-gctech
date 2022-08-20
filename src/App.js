@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import Main from "./compnents/Main";
 import Swap from "./compnents/Swap";
+import Footer from "./compnents/Footer";
 
 function App() {
   const [xausSupply, setXausSupply] = useState(0);
@@ -122,6 +123,7 @@ function App() {
       <Navbar />
       <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm}/>
       <Swap />
+      <Footer/>
     </div>
   );
 }

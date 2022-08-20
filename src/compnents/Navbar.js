@@ -18,6 +18,7 @@ import {
 
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
+  const [active, setActive] = useState(1);
 
   return (
     <MDBNavbar expand="lg" light bgColor="transparent">
@@ -35,17 +36,21 @@ export default function App() {
 
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0 justify-content-center">
-            <MDBNavbarItem>
-              <MDBNavbarLink active aria-current="page" href="#">
+            <MDBNavbarItem onClick={()=>setActive(1)}>
+              <MDBNavbarLink
+                aria-current="page"
+                href="#"
+                className={active===1 ? 'active' : ""}
+              >
                 HOME
               </MDBNavbarLink>
             </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="#">STAKING</MDBNavbarLink>
+            <MDBNavbarItem onClick={()=>setActive(2)}>
+              <MDBNavbarLink href="#" className={active===2 ? 'active' : ""}>STAKING</MDBNavbarLink>
             </MDBNavbarItem>
 
-            <MDBNavbarItem>
-              <MDBNavbarLink href="#">ADMIN</MDBNavbarLink>
+            <MDBNavbarItem onClick={()=>{setActive(3);}}>
+              <MDBNavbarLink href="#" className={active===3 ? 'active' : ""}>ADMIN</MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
 
