@@ -20,7 +20,7 @@ export default function Main() {
           spacing={2}
           sx={{ marginTop: "20px", padding: "10px 20px" }}
         >
-          <Grid item xs={12} sm={12} md={6} xl={3}>
+          {/* <Grid item xs={12} sm={12} md={6} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>TOTAL SUPPLY</MDBCardTitle>
@@ -39,7 +39,7 @@ export default function Main() {
                 </h4>
               </MDBCardBody>
             </MDBCard>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={12} md={6} xl={3}>
             <MDBCard>
               <MDBCardBody>
