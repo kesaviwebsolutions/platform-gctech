@@ -68,12 +68,26 @@ function App() {
           return response.data.price
         });
 
-      Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau);
+        let headersList = {
+          Accept: "*/*",
+          "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        };
+        let reqOptions = {
+          url: "https://api.exchangerate.host/convert?from=USD&to=CNH",
+          method: "GET",
+          headers: headersList,
+        };
+        const btwo = await axios.request(reqOptions).then(function (response) {
+          return Number(response.data.info.rate).toFixed(5)
+        });
+  
+
+      Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo);
     };
     init();
   }, []);
 
-  const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt, xau) => {
+  const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo) => {
     const gcsmk = (Number(closeprice) * 5000000).toFixed(0);
     const gcstousd = closeprice;
     const gcsusdm = (mmk * closeprice) / govt;
@@ -82,8 +96,7 @@ function App() {
     const usdmtousdt = Number(closeprice/gcsusdm).toFixed(5)
     const usdmmk = 755030 * closeprice
     const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03)/gcstousd).toFixed(5)
-    const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03)/(3 / bTwo)).toFixed(5)
-    // console.log("gcs market"+gcsmk+" gcstousd"+gcstousd+" gcsusdm"+gcsusdm)
+    const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03)/(3 / btwo)).toFixed(5)
   };
 
   return (
