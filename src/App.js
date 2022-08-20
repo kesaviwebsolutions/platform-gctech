@@ -91,20 +91,12 @@ function App() {
     const gcstousd = closeprice;
     const gcsusdm = (mmk * closeprice) / govt;
     const xaustousd = ((xau / 31.1025) * 0.425 * 1.03).toFixed(5);
-    const xausmk = Number(
-      xaus * ((xau / 31.1025) * 0.425 * 1.03).toFixed(5)
-    ).toFixed(0);
+    const xausmk = Number(xaus * ((xau / 31.1025) * 0.425 * 1.03).toFixed(5)).toFixed(0);
     const usdmtousdt = Number(closeprice / gcsusdm).toFixed(5);
     const usdmmk = 755030 * closeprice;
     const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03) / gcstousd).toFixed(5);
-
-    const xaustousdm = Number(
-      ((xau / 31.1025) * 0.425 * 1.03) / (3 / btwo)
-    ).toFixed(5);
-
-    // const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03)/(3 / bTwo)).toFixed(5)
-    // console.log("gcs market"+gcsmk+" gcstousd"+gcstousd+" gcsusdm"+gcsusdm)
-  };
+    const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03) / (3 / btwo)).toFixed(5);
+};
 
   return (
     <div className="App">
