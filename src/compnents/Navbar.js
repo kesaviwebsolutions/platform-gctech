@@ -18,7 +18,7 @@ import {
   MDBInputGroup,
 } from "mdb-react-ui-kit";
 
-export default function Navbar() {
+export default function App() {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
@@ -36,7 +36,7 @@ export default function Navbar() {
         </MDBNavbarToggler>
 
         <MDBCollapse navbar show={showBasic}>
-          <MDBNavbarNav className="collapse navbar-collapse justify-content-center">
+          <MDBNavbarNav className="mr-auto mb-2 mb-lg-0 justify-content-center">
             <MDBNavbarItem>
               <MDBNavbarLink active aria-current="page" href="#">
                 Home
@@ -76,6 +76,16 @@ export default function Navbar() {
               </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
+
+          {/* <MDBInputGroup tag="form" className="d-flex w-auto mb-3">
+            <input
+              className="form-control"
+              placeholder="Type query"
+              aria-label="Search"
+              type="Search"
+            />
+            <MDBBtn outline>Search</MDBBtn>
+          </MDBInputGroup> */}
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>

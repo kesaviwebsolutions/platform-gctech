@@ -10,6 +10,7 @@ import {
 } from "./Web3/Web3";
 import axios from "axios";
 import Main from "./compnents/Main";
+import Swap from "./compnents/Swap";
 
 function App() {
   const [xausSupply, setXausSupply] = useState(0);
@@ -67,6 +68,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Main />
+      <Swap/>
     </div>
   );
 }
