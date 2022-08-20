@@ -85,23 +85,42 @@ function App() {
     };
     init();
   }, []);
+  const [gcsmaketcap, setGcsSupplyCap] = useState(0);
+  const [gcstousd, setGcstoUsd] = useState(0)
+  const [gcsusdm, setGcsusdm] = useState(0)
+  const [xaustousd, setXaustoUsd] = useState(0)
+  const [xausmk, setXausmk] = useState(0);
+  const [usdmtousdt, setUsdmtousdt] = useState(0);
+  const [usdmmarketcap, setUsdmMarketcap] = useState(0);
+  const [xaustogcs, setXausGcs] = useState(0);
+  const [xaustousdm, setXaustousdm] = useState(0);
+
 
   const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo) => {
     const gcsmk = (Number(closeprice) * 5000000).toFixed(0);
+    setGcsSupplyCap(gcsmk)
     const gcstousd = closeprice;
+    setGcstoUsd(closeprice)
     const gcsusdm = (mmk * closeprice) / govt;
+    setGcsusdm(gcsusdm)
     const xaustousd = ((xau / 31.1025) * 0.425 * 1.03).toFixed(5);
+    setXaustoUsd(xaustousd)
     const xausmk = Number(xaus * ((xau / 31.1025) * 0.425 * 1.03).toFixed(5)).toFixed(0);
+    setXausmk(xausmk)
     const usdmtousdt = Number(closeprice / gcsusdm).toFixed(5);
+    setUsdmtousdt(usdmtousdt)
     const usdmmk = 755030 * closeprice;
+    setUsdmMarketcap(usdmmk)
     const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03) / gcstousd).toFixed(5);
+    setXausGcs(xaustogcs)
     const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03) / (3 / btwo)).toFixed(5);
-};
+    setXaustousdm(xaustousdm)
+  };
 
   return (
     <div className="App">
       <Navbar />
-      <Main />
+      <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm}/>
       <Swap />
     </div>
   );
