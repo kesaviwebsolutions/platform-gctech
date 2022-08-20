@@ -24,6 +24,7 @@ function App() {
       setGcsSupply(gcs);
       const usdm = await USDM_Totak_Supply();
       setUsdmSupply(usdm);
+
       const closeprice = await axios
         .get("https://sapi.gcex.lt/v1/market/tickers", {})
         .then(function (response) {
@@ -33,14 +34,33 @@ function App() {
           console.log(error);
         });
 
-      Calculation(xaus, gcs, usdm, closeprice);
+      const mmk = await axios
+        .get(`https://apigctech.ap.ngrok.io/mmkprice`)
+        .then(function (response) {
+          response.data.reverse();
+          return response.data[0].price;
+        })
+        .catch(function (error) {
+          console.log("Error", error);
+        });
+
+      const govt = await axios
+        .get(`https://apigctech.ap.ngrok.io/values`)
+        .then(function (response) {
+          return response.data[0].govt;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      Calculation(xaus, gcs, usdm, closeprice, mmk, govt);
     };
-    init();
   }, []);
 
-  const Calculation = (xaus, gcs, usdm, closeprice) => {
+  const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt) => {
     const gcsmk = (Number(closeprice) * 5000000).toFixed(0);
     const gcstousd = closeprice;
+    const gcsusdm = (mmk * closeprice) / govt;
   };
 
   return (
