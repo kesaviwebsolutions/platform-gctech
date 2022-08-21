@@ -122,7 +122,7 @@ function App() {
     <div className="App">
       <Navbar />
         <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm}/>
-        <Swap />
+        <Swap gcsusdm={gcsusdm}/>
       <Footer/>
     </div>
   );

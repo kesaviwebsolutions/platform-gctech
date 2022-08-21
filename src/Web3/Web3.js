@@ -1,4 +1,6 @@
 import Web3 from 'web3/dist/web3.min.js';
+import { swapabi, swapaddress, tokenBalance } from './GCS-to-USDM-abi';
+
 const web3 = new Web3(window.ethereum)
 const abi = [
     {
@@ -86,6 +88,45 @@ export const GCS_Totak_Supply =async()=>{
      const data = await contract.methods.totalSupply().call();
      // console.log("contract",contract)
      return Number(data/10**18)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const SwapToken = async(tab,amount,ratio)=>{
+    try {
+        const a = await towie(amount);
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        if(tab){
+            const data = await contract.methods.swapGCSTOUSDM(a,ratio).send({from:await getUserAddress()});
+            return data;
+        }
+        else{
+            const data = await contract.methods.swapUSDMTOGCS(a,1/ratio).send({from:await getUserAddress()});
+            return data;
+        }
+
+    } catch (error) {
+        
+    }
+    
+}
+
+export const getTokenBalancegcs =async(address)=>{
+    try {
+        const contract = new web3.eth.Contract(tokenBalance, address);
+        const data = await contract.methods.balanceOf(await getUserAddress()).call();
+        return data/10**18;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getTokenBalanceusdm =async(address)=>{
+    try {
+        const contract = new web3.eth.Contract(tokenBalance, address);
+        const data = await contract.methods.balanceOf(await getUserAddress()).call();
+        return data/10**18;
     } catch (error) {
         console.log(error)
     }
