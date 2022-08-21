@@ -14,9 +14,15 @@ import {
 import meta from "../images/meta.png";
 import connect from "../images/connect.svg";
 
-export default function App() {
+export default function App({Metamask,acount}) {
   const [showBasic, setShowBasic] = useState(false);
   const [active, setActive] = useState(1);
+
+  const slicewallet = (add) =>{
+    const first = add.slice(0,5);
+    const second = add.slice(37)
+    return first + "..." + second;
+  }
 
   return (
     <MDBNavbar expand="lg" light bgColor="transparent">
@@ -62,10 +68,9 @@ export default function App() {
           <button
             type="button"
             className="connectButton"
-            data-mdb-toggle="modal"
-            data-mdb-target="#exampleModal"
+            onClick={()=>Metamask()}
           >
-            Connect Wallet
+            {acount ? slicewallet(acount)  : "Connect Wallet"}
           </button>
 
           {/* <div className="dropdown">

@@ -87,6 +87,26 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
+          <Grid item xs={12} sm={12} md={4} xl={4}>
+            <MDBCard>
+              <MDBCardBody>
+                <MDBCardTitle>USDM TO GCS</MDBCardTitle>
+                <h4
+                  style={{
+                    fontWeight: " 500",
+                    color: "#000000",
+                    fontSize: "20px",
+                  }}
+                >
+                  {Number(1/gcsusdm).toFixed(5)}
+                  <MDBBadge color="success" className="mx-2">
+                    {/* <MDBIcon fas icon="chart-line" /> 70.32% */}
+                  </MDBBadge>
+                </h4>
+              </MDBCardBody>
+            </MDBCard>
+          </Grid>
+
         </Grid>
         <Grid
           container
@@ -150,13 +170,32 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
+          <Grid item xs={12} sm={12} md={4} xl={4}>
+            <MDBCard>
+              <MDBCardBody>
+                <MDBCardTitle>XAUS TO GCS</MDBCardTitle>{" "}
+                <h4
+                  style={{
+                    fontWeight: " 500",
+                    color: "#000000",
+                    fontSize: "20px",
+                  }}
+                >
+                  {Number(xaustogcs).toFixed(5)}
+                  <MDBBadge color="success" className="mx-2">
+                    <BiLineChart size={20}/> 70.32%
+                  </MDBBadge>
+                </h4>
+              </MDBCardBody>
+            </MDBCard>
+          </Grid>
         </Grid>
         <Grid
           container
           spacing={2}
           sx={{ marginTop: "20px", padding: "10px 20px" }}
         >
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={4} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>GCS TO USDM</MDBCardTitle>{" "}
@@ -175,10 +214,10 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={4} xl={3}>
             <MDBCard>
               <MDBCardBody>
-                <MDBCardTitle>GSC TO XAUS</MDBCardTitle>{" "}
+                <MDBCardTitle>GCS TO XAUS</MDBCardTitle>{" "}
                 <h4
                   style={{
                     fontWeight: " 500",
@@ -189,6 +228,25 @@ export default function Main({
                   {Number(1 / xaustogcs).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
                     <BiLineChart size={20}/> 70.32%
+                  </MDBBadge>
+                </h4>
+              </MDBCardBody>
+            </MDBCard>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} xl={3}>
+            <MDBCard>
+              <MDBCardBody>
+                <MDBCardTitle>USDM TO XAUS</MDBCardTitle>
+                <h4
+                  style={{
+                    fontWeight: " 500",
+                    color: "#000000",
+                    fontSize: "20px",
+                  }}
+                >
+                  {Number(1 / xaustousdm).toFixed(5)}
+                  <MDBBadge color="danger" className="mx-2">
+                    <BiLineChartDown size={20}/> 27.02%
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -205,7 +263,7 @@ export default function Main({
                     fontSize: "20px",
                   }}
                 >
-                  {Number(1 / xaustousdm).toFixed(5)}
+                  {Number(xaustousdm).toFixed(5)}
                   <MDBBadge color="danger" className="mx-2">
                     <BiLineChartDown size={20}/> 27.02%
                   </MDBBadge>

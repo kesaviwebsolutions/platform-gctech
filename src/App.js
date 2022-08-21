@@ -7,6 +7,9 @@ import {
   XAUs_Totak_Supply,
   USDM_Totak_Supply,
   GCS_Totak_Supply,
+  login,
+  GetChainId,
+  getUserAddress
 } from "./Web3/Web3";
 import axios from "axios";
 import Main from "./compnents/Main";
@@ -118,11 +121,62 @@ function App() {
     setXaustousdm(xaustousdm)
   };
 
+
+  const [user, setUser] = useState();
+  const [acount, setAccount] = useState();
+
+  useEffect(() => {
+    const init = async () => {
+      if (window.ethereum) {
+        await Metamask();
+      }
+      const id = await GetChainId();
+      console.log(id);
+      if (Number(id) != 3) {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: "0x3" }], // chainId must be in hexadecimal numbers
+        });
+      }
+    };
+
+    init();
+  }, []);
+
+
+
+  const Metamask = async () => {
+    await login();
+    const add = await getUserAddress();
+    console.log("Metamask",add)
+    setAccount(add);
+  };
+
+  const Dissconnect = async () => {
+    setAccount(undefined);
+  };
+
+  try {
+    window.ethereum.on("accountsChanged", function (accounts) {
+      setAccount(accounts[0]);
+    });
+  } catch (error) {}
+
+  try {
+    window.ethereum.on("chainChanged", function (accounts) {
+      window.location.reload();
+    });
+  } catch (error) {}
+
+
+
   return (
     <div className="App">
-      <Navbar />
-        <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm}/>
-        <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm}/>
+      <Navbar
+        Metamask={Metamask}
+        acount={acount}/>
+        <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm} account={acount}/>
+        <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm} account={acount}/>
       <Footer/>
     </div>
   );

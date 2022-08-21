@@ -21,7 +21,7 @@ const usdm = "0x24D5d3e32be29bFA889aF6fd370311633257eD64"
 const gcs = "0x84cae20b42be7f0c580f7b0a7e8663fd4bea7d81"
 const xaus = "0x84cae20b42be7f0c580f7b0a7e8663fd4bea7d81"
 
-export default function Swap({gcsusdm, xaustousdm}) {
+export default function Swap({gcsusdm, xaustousdm, acount}) {
   const [swap, setSwap] = useState(true);
   const [swap2, setSwap2] = useState(true);
   const [gcsBalance, setGcsBalance] = useState(0);
@@ -40,7 +40,7 @@ export default function Swap({gcsusdm, xaustousdm}) {
       setXausbalance(xausbal)
     }
     init();
-  },[])
+  },[acount])
 
   const Swap = async()=>{
     const data = await SwapToken(swap,amount,gcsusdm,usdm,gcs);
