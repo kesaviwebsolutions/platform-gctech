@@ -118,7 +118,7 @@ export default function Swap({gcsusdm}) {
                   </>
                 }
                 <Box className="swap">
-                  <Typography className="swap-button" sx={{ margin: "auto" }}>
+                  <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>Swap()}>
                     SWAP
                   </Typography>
                 </Box>

@@ -95,6 +95,7 @@ export const GCS_Totak_Supply =async()=>{
 
 export const SwapToken = async(tab,amount,ratio)=>{
     try {
+        console.log(tab,amount,ratio)
         const a = await towie(amount);
         const contract = new web3.eth.Contract(swapabi, swapaddress);
         if(tab){
@@ -107,7 +108,7 @@ export const SwapToken = async(tab,amount,ratio)=>{
         }
 
     } catch (error) {
-        
+        console.log(error)
     }
     
 }
