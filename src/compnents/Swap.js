@@ -54,7 +54,7 @@ export default function Swap({gcsusdm, xaustousdm, acount}) {
   }
 
   const Swap2 = async()=>{
-    const data = await SwapToken2(swap,amount2,xaustousdm,usdm,xaus);
+    const data = await SwapToken2(swap2,amount2,xaustousdm,usdm,xaus);
     if(data.status){
       notify();
       const xausbal = await getTokenBalancegcs(xaus);
