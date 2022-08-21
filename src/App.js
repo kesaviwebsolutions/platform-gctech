@@ -114,7 +114,7 @@ function App() {
     setUsdmMarketcap(usdmmk)
     const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03) / gcstousd).toFixed(5);
     setXausGcs(xaustogcs)
-    const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03) / (3 / btwo)).toFixed(5);
+    const xaustousdm = Number(xaustousd/usdmtousdt).toFixed(5);
     setXaustousdm(xaustousdm)
   };
 
@@ -122,7 +122,7 @@ function App() {
     <div className="App">
       <Navbar />
         <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm}/>
-        <Swap gcsusdm={gcsusdm}/>
+        <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm}/>
       <Footer/>
     </div>
   );

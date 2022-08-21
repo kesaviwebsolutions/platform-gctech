@@ -67,7 +67,7 @@ export const XAUs_Totak_Supply =async()=>{
      // console.log("contract",contract)
      return Number(data/10**18)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -78,7 +78,7 @@ export const USDM_Totak_Supply =async()=>{
      // console.log("contract",contract)
      return Number(data/10**18)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -89,29 +89,84 @@ export const GCS_Totak_Supply =async()=>{
      // console.log("contract",contract)
      return Number(data/10**18)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
-export const SwapToken = async(tab,amount,ratio)=>{
+export const SwapToken = async(tab,amount,ratio,usdm,gcs)=>{
     try {
-        console.log(tab,amount,ratio)
         const a = await towie(amount);
+        const r = await towie(ratio);
+        const b = await towie(1/ratio);    
         const contract = new web3.eth.Contract(swapabi, swapaddress);
+        console.log(a,r,b)
         if(tab){
-            const data = await contract.methods.swapGCSTOUSDM(a,ratio).send({from:await getUserAddress()});
-            return data;
+            const isApprove = await Allow(gcs);
+            if(Number(isApprove)>0){
+                const data = await contract.methods.swapGCSTOUSDM(a,r).send({from:await getUserAddress()});
+                return data;
+            }
+            else{
+                const data2 = await Approve(gcs);
+                const data = await contract.methods.swapGCSTOUSDM(a,r).send({from:await getUserAddress()});
+                return data;
+            }
         }
         else{
-            const data = await contract.methods.swapUSDMTOGCS(a,1/ratio).send({from:await getUserAddress()});
-            return data;
+            const isApprove = await Allow(usdm);
+            if(Number(isApprove)>0){
+              const data = await contract.methods.swapUSDMTOGCS(a,b).send({from:await getUserAddress()});
+              return data;
+            }
+            else{
+                await Approve(usdm);
+                const data = await contract.methods.swapUSDMTOGCS(a,b).send({from:await getUserAddress()});
+                return data;
+            }
         }
-
     } catch (error) {
         console.log(error)
     }
     
 }
+
+export const SwapToken2 = async(tab,amount,ratio,usdm,xaus)=>{
+    try {
+        const a = await towie(amount);
+        const r = await towie(ratio);
+        const b = await towie(1/ratio);    
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        console.log(a,b)
+        if(tab){
+            const isApprove = await Allow(usdm);
+            if(Number(isApprove)>0){
+                const data = await contract.methods.swapGCSTOUSDM(a,b).send({from:await getUserAddress()});
+                return data;
+            }
+            else{
+                const data2 = await Approve(usdm);
+                const data = await contract.methods.swapGCSTOUSDM(a,b).send({from:await getUserAddress()});
+                return data;
+            }
+        }
+        else{
+            const isApprove = await Allow(xaus);
+            if(Number(isApprove)>0){
+              const data = await contract.methods.swapUSDMTOGCS(a,r).send({from:await getUserAddress()});
+              return data;
+            }
+            else{
+                await Approve(xaus);
+                const data = await contract.methods.swapUSDMTOGCS(a,r).send({from:await getUserAddress()});
+                return data;
+            }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
 
 export const getTokenBalancegcs =async(address)=>{
     try {
@@ -130,5 +185,24 @@ export const getTokenBalanceusdm =async(address)=>{
         return data/10**18;
     } catch (error) {
         console.log(error)
+    }
+}
+export const Approve = async(address) =>{
+    try {
+        const contract = new web3.eth.Contract(tokenBalance, address);
+        const data = await contract.methods.approve(swapaddress,115792089237316195423570985008687907853269984665640564039457584007913129639935n).send({from:await getUserAddress()});
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const Allow =async(address)=>{
+    try {
+        const contract = new web3.eth.Contract(tokenBalance, address);
+        const data = await contract.methods.allowance(await getUserAddress(), swapaddress).call();
+        return data;
+    } catch (error) {
+        
     }
 }

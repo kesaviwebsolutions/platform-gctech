@@ -12,20 +12,23 @@ import { Button, ButtonBase, Grid, Typography } from "@mui/material";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { Box, Container } from "@mui/system";
 import toast, { Toaster } from 'react-hot-toast';
-import { getTokenBalancegcs, getTokenBalanceusdm, SwapToken } from "../Web3/Web3";
+import { getTokenBalancegcs, getTokenBalanceusdm, SwapToken, SwapToken2 } from "../Web3/Web3";
 
 
-const notify = () => toast('Here is your toast.');
+const notify = () => toast('Swap Success');
 
 const usdm = "0x24D5d3e32be29bFA889aF6fd370311633257eD64"
-const gcs = "0xBfC6a81C216f3B80b1AdEBBaa439374Dc9a460bd"
+const gcs = "0x84cae20b42be7f0c580f7b0a7e8663fd4bea7d81"
+const xaus = "0x84cae20b42be7f0c580f7b0a7e8663fd4bea7d81"
 
-export default function Swap({gcsusdm}) {
+export default function Swap({gcsusdm, xaustousdm}) {
   const [swap, setSwap] = useState(true);
-  const [swap2, setSwap2] = useState(false);
+  const [swap2, setSwap2] = useState(true);
   const [gcsBalance, setGcsBalance] = useState(0);
   const [usdmBalance, setUsdmBalance] = useState(0);
   const [amount, setAmount] = useState(0)
+  const [amount2, setAmount2] = useState(0)
+  const [xausbal, setXausbalance] = useState(0)
 
   useEffect(()=>{
     const init = async()=>{
@@ -33,18 +36,51 @@ export default function Swap({gcsusdm}) {
       setGcsBalance(gcsbal)
       const usdmbal = await getTokenBalanceusdm(usdm);
       setUsdmBalance(usdmbal);
+      const xausbal = await getTokenBalancegcs(xaus);
+      setXausbalance(xausbal)
     }
     init();
   },[])
 
   const Swap = async()=>{
-    const data = await SwapToken(swap,amount,gcsusdm);
+    const data = await SwapToken(swap,amount,gcsusdm,usdm,gcs);
     if(data.status){
-      notify()
+      notify();
       const gcsbal = await getTokenBalancegcs(gcs);
       setGcsBalance(gcsbal)
       const usdmbal = await getTokenBalanceusdm(usdm);
       setUsdmBalance(usdmbal);
+    }
+  }
+
+  const Swap2 = async()=>{
+    const data = await SwapToken2(swap,amount2,xaustousdm,usdm,xaus);
+    if(data.status){
+      notify();
+      const xausbal = await getTokenBalancegcs(xaus);
+      setXausbalance(xausbal)
+      const usdmbal = await getTokenBalanceusdm(usdm);
+      setUsdmBalance(usdmbal);
+    }
+  }
+
+
+
+  const maxforgcsusdm = ()=>{
+    if(swap){
+      setAmount(gcsBalance)
+    }
+    else{
+      setAmount(usdmBalance)
+    }
+  }
+
+  const maxforgcsusdm2 = ()=>{
+    if(swap2){
+      setAmount2(usdmBalance)
+    }
+    else{
+      setAmount2(xausbal)
     }
   }
 
@@ -84,11 +120,12 @@ export default function Swap({gcsusdm}) {
                       <MDBInput
                         id="form1"
                         type="number"
+                        value={amount}
                         onChange={(e)=>setAmount(e.target.value)}
                         placeholder="0.0"
                         style={{ padding: "30px 20px" }}
                       />
-                      <Typography className="max-button"> MAX</Typography>
+                      <Typography className="max-button" onClick={()=>maxforgcsusdm()}> MAX</Typography>
                     </Box>
 
                     <MDBIcon
@@ -144,24 +181,26 @@ export default function Swap({gcsusdm}) {
                 >
                   Trade tokens in an instant
                 </MDBCardSubTitle>
-                {swap2 ? (
+                {
                   <>
                     <Box className="position-relative">
                       <Box className="title-area">
                         <Typography
                           sx={{ margin: "10px 0px", fontWeight: "500" }}
                         >
-                          XAUS
+                          {swap2 ? "USDM" : "XAUS"}
                         </Typography>
-                        <Typography>Balance : 0</Typography>
+                        <Typography>Balance : {swap2 ? usdmBalance : xausbal}</Typography>
                       </Box>
                       <MDBInput
                         id="form1"
                         type="number"
+                        value={amount2}
+                        onChange={(e)=>setAmount2(e.target.value)}
                         placeholder="0.0"
                         style={{ padding: "30px 20px" }}
                       />
-                      <Typography className="max-button"> MAX</Typography>
+                      <Typography className="max-button" onClick={()=>maxforgcsusdm2()}> MAX</Typography>
                     </Box>
                     <MDBIcon
                       fas
@@ -174,63 +213,23 @@ export default function Swap({gcsusdm}) {
                         <Typography
                           sx={{ margin: "10px 0px", fontWeight: "500" }}
                         >
-                          USDM
+                          {swap2 ? "XAUS" : "USDM"}
                         </Typography>
-                        <Typography>Balance : 0</Typography>
+                        <Typography>Balance : {swap2 ? xausbal : usdmBalance}</Typography>
                       </Box>
                       <MDBInput
                         id="form1"
+                        disabled={true}
+                        value={swap2 ? (amount2*(1/xaustousdm)) : (amount2*xaustousdm)}
                         type="number"
                         placeholder="0.0"
                         style={{ padding: "30px 20px" }}
                       />
                     </Box>
                   </>
-                ) : (
-                  <>
-                    <Box className="position-relative">
-                      <Box className="title-area">
-                        <Typography
-                          sx={{ margin: "10px 0px", fontWeight: "500" }}
-                        >
-                          USDM
-                        </Typography>
-                        <Typography>Balance : 0</Typography>
-                      </Box>
-                      <MDBInput
-                        id="form1"
-                        type="number"
-                        placeholder="0.0"
-                        style={{ padding: "30px 20px" }}
-                      />
-                      <Typography className="max-button"> MAX</Typography>
-                    </Box>
-                    <MDBIcon
-                      fas
-                      icon="arrows-alt-v"
-                      className="swap-icon"
-                      onClick={() => setSwap2(!swap2)}
-                    />
-                    <Box className="position-relative">
-                      <Box className="title-area">
-                        <Typography
-                          sx={{ margin: "10px 0px", fontWeight: "500" }}
-                        >
-                          XAUS
-                        </Typography>
-                        <Typography>Balance : 0</Typography>
-                      </Box>
-                      <MDBInput
-                        id="form1"
-                        type="number"
-                        placeholder="0.0"
-                        style={{ padding: "30px 20px" }}
-                      />
-                    </Box>
-                  </>
-                )}
+                }
                 <Box className="swap">
-                  <Typography className="swap-button" sx={{ margin: "auto" }}>
+                  <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>Swap2()}>
                     SWAP
                   </Typography>
                 </Box>
