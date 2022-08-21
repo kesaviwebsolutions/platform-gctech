@@ -24,13 +24,13 @@ export default function Main({
 }) {
   return (
     <>
-      <Container maxWidth="lg" minwidth="md">
+      <Container maxWidth="lg">
         <Grid
           container
           spacing={2}
           sx={{ marginTop: "20px", padding: "10px 20px" }}
         >
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>GSC Market Cap</MDBCardTitle>
@@ -49,7 +49,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>USDM Market Cap</MDBCardTitle>{" "}
@@ -68,7 +68,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>XAUS Market Cap</MDBCardTitle>
@@ -87,7 +87,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>USDM TO GCS</MDBCardTitle>
@@ -113,7 +113,7 @@ export default function Main({
           spacing={2}
           sx={{ marginTop: "20px", padding: "10px 20px" }}
         >
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>XAUS TO USD</MDBCardTitle>{" "}
@@ -132,7 +132,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>USDM TO USD</MDBCardTitle>
@@ -151,7 +151,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>GSC TO USD</MDBCardTitle>
@@ -170,7 +170,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>XAUS TO GCS</MDBCardTitle>{" "}
@@ -195,7 +195,7 @@ export default function Main({
           spacing={2}
           sx={{ marginTop: "20px", padding: "10px 20px" }}
         >
-          <Grid item xs={12} sm={12} md={4} xl={3}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>GCS TO USDM</MDBCardTitle>{" "}
@@ -214,7 +214,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={3}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>GCS TO XAUS</MDBCardTitle>{" "}
@@ -233,7 +233,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={3}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>USDM TO XAUS</MDBCardTitle>
@@ -252,7 +252,7 @@ export default function Main({
               </MDBCardBody>
             </MDBCard>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>USDM TO XAUS</MDBCardTitle>
