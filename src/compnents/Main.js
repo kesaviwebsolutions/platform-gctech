@@ -126,7 +126,7 @@ export default function Main({
                 >
                   ${xaustousd}
                   <MDBBadge color="success" className="mx-2">
-                    <BiLineChart size={20}/> 59.32%
+                    {/* <BiLineChart size={20}/> 59.32% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -145,7 +145,7 @@ export default function Main({
                 >
                   ${usdmtousdt}
                   <MDBBadge color="success" className="mx-2">
-                    <BiLineChart size={20}/> 70.32%
+                    {/* <BiLineChart size={20}/> 70.32% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -164,7 +164,7 @@ export default function Main({
                 >
                   ${gcstousd}
                   <MDBBadge color="danger" className="mx-2">
-                    <BiLineChartDown size={20}/> 27.02%
+                    {/* <BiLineChartDown size={20}/> 27.02% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -183,7 +183,7 @@ export default function Main({
                 >
                   {Number(xaustogcs).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
-                    <BiLineChart size={20}/> 70.32%
+                    {/* <BiLineChart size={20}/> 70.32% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -208,7 +208,7 @@ export default function Main({
                 >
                   {Number(gcsusdm).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
-                    <BiLineChart size={20}/> 59.32%
+                    {/* <BiLineChart size={20}/> 59.32% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -227,7 +227,7 @@ export default function Main({
                 >
                   {Number(1 / xaustogcs).toFixed(5)}
                   <MDBBadge color="success" className="mx-2">
-                    <BiLineChart size={20}/> 70.32%
+                    {/* <BiLineChart size={20}/> 70.32% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -246,7 +246,7 @@ export default function Main({
                 >
                   {Number(1 / xaustousdm).toFixed(5)}
                   <MDBBadge color="danger" className="mx-2">
-                    <BiLineChartDown size={20}/> 27.02%
+                    {/* <BiLineChartDown size={20}/> 27.02% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
@@ -265,7 +265,7 @@ export default function Main({
                 >
                   {Number(xaustousdm).toFixed(5)}
                   <MDBBadge color="danger" className="mx-2">
-                    <BiLineChartDown size={20}/> 27.02%
+                    {/* <BiLineChartDown size={20}/> 27.02% */}
                   </MDBBadge>
                 </h4>
               </MDBCardBody>
