@@ -255,7 +255,7 @@ export default function Main({
           <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
-                <MDBCardTitle>USDM TO XAUS</MDBCardTitle>
+                <MDBCardTitle>XAUS TO USDM</MDBCardTitle>
                 <h4
                   style={{
                     fontWeight: " 500",

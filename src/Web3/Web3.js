@@ -17,9 +17,9 @@ const abi = [
         type: "function",
       }
 ]
-const xaus = "0x66d7Ca7C5111F6544a06bBf2C430a1D070d02d27"
-const gcs = "0xd14D55DE774198A0a60b51B8786AD08741922Ef0"
-const usdm = "0x08Ab7E5C08CC0D78589Fc506c35Ea9c2520A86bc"
+const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
+const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
+const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
 
 export const login =async()=> {
     const data = await window.ethereum.enable();
@@ -136,28 +136,32 @@ export const SwapToken2 = async(tab,amount,ratio,usdm,xaus)=>{
         const r = await towie(ratio);
         const b = await towie(1/ratio);    
         const contract = new web3.eth.Contract(swapabi, swapaddress);
-        console.log(a,b)
+        
         if(tab){
             const isApprove = await Allow(usdm);
             if(Number(isApprove)>0){
-                const data = await contract.methods.swapGCSTOUSDM(a,b).send({from:await getUserAddress()});
+                console.log(a,b)
+                const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
                 return data;
             }
             else{
+                console.log(a,b)
                 const data2 = await Approve(usdm);
-                const data = await contract.methods.swapGCSTOUSDM(a,b).send({from:await getUserAddress()});
+                const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
                 return data;
             }
         }
         else{
             const isApprove = await Allow(xaus);
             if(Number(isApprove)>0){
-              const data = await contract.methods.swapUSDMTOGCS(a,r).send({from:await getUserAddress()});
+                console.log(a,r)
+              const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
               return data;
             }
             else{
+                console.log(a,r)
                 await Approve(xaus);
-                const data = await contract.methods.swapUSDMTOGCS(a,r).send({from:await getUserAddress()});
+                const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
                 return data;
             }
         }
