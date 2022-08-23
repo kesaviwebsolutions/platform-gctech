@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import {
   MDBCard,
   MDBCardBody,
@@ -12,10 +12,69 @@ import {
 } from "mdb-react-ui-kit";
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import toast, { Toaster } from 'react-hot-toast';
+import { totalGCSfee, totalUSDMfee, totalUSDTfee, totalXAUSfee, totalGCSswap, totalUSDTswap, totalUSDMswap, totalXAUSswap, newAdmin, newFee } from "./../../Web3/Web3"
 
-export default function Admin() {
+const notify = (msg) => toast(msg);
+
+
+export default function Admin({account, contractadmin}) {
+  
+  const [usdmfee, setUsdmfee] = useState(0);
+  const [xausfee, setXausfee] = useState(0);
+  const [usdtfee, setUsdtfee] = useState(0);
+  const [gcsfee, setGcsfee] = useState(0);
+  const [usdmswap, setUsdmswap] = useState(0);
+  const [xausswap, setXausswap] = useState(0);
+  const [usdtswap, setUsdtswap] = useState(0);
+  const [gcsswap, setGcsswap] = useState(0);
+  const [fee, setFee] = useState(0);
+  const [admin, setAdmin] = useState();
+  const [user, setUser] = useState(false);
+
+  useEffect(()=>{
+    const init =async()=>{
+      if(contractadmin == account){
+        setUser(true)
+      }
+      const usdmf = await totalUSDMfee();
+      const gcsf = await totalGCSfee();
+      const usdtf = await totalUSDTfee();
+      const xausf = await totalXAUSfee();
+      const usdms = await totalUSDMswap();
+      const usdts = await totalUSDTswap();
+      const xauss = await totalXAUSswap();
+      const gcss = await totalGCSswap();
+      setGcsfee(gcsf);
+      setUsdmfee(usdmf);
+      setUsdtfee(usdtf);
+      setXausfee(xausf);
+      setUsdmswap(usdms);
+      setUsdtswap(usdts);
+      setXausswap(xauss);
+      setGcsswap(gcss);
+    }
+
+    init();
+  },[account])
+
+  const setnewAdmin =async()=>{
+    const data = await newAdmin(admin)
+    if(data.status){
+      notify("New admin set successfully")
+    }
+  }
+
+  const setnewfee =async()=>{
+    const data = await newFee(fee)
+    if(data.status){
+      notify("Fee has updated")
+    }
+  }
+
   return (
-    <Container maxWidth="lg">
+    <>
+   { contractadmin == account ? <Container maxWidth="lg">
       <Grid
         container
         spacing={2}
@@ -24,7 +83,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>GSC Market Cap</MDBCardTitle>
+              <MDBCardTitle>Total GCS Fee Collected</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -32,7 +91,7 @@ export default function Admin() {
                   fontSize: "20px",
                 }}
               >
-                $42
+                {gcsfee}
                 <MDBBadge color="success" className="mx-2">
                   {/* <MDBIcon fas icon="chart-line" /> 70.32% */}
                 </MDBBadge>
@@ -43,7 +102,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>USDM Market Cap</MDBCardTitle>{" "}
+              <MDBCardTitle>Total XAUS Fee Collected</MDBCardTitle>{" "}
               <h4
                 style={{
                   fontWeight: " 500",
@@ -52,7 +111,7 @@ export default function Admin() {
                 }}
               >
                 {/* ${Number(usdmmarketcap).toFixed(0)} */}
-                $45
+                {xausfee}
                 <MDBBadge color="danger" className="mx-2">
                   {/* <MDBIcon fas icon="chart-line" /> 27.02% */}
                 </MDBBadge>
@@ -63,7 +122,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>XAUS Market Cap</MDBCardTitle>
+              <MDBCardTitle>Total USDM Fee Collected</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -72,7 +131,7 @@ export default function Admin() {
                 }}
               >
                 {/* ${xausmk} */}
-                $90
+                {usdmfee}
                 <MDBBadge color="danger" className="mx-2">
                   {/* <MDBIcon fas icon="chart-line" /> 9.00% */}
                 </MDBBadge>
@@ -83,7 +142,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>USDM TO GCS</MDBCardTitle>
+              <MDBCardTitle>Total USDT Fee Collected</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -92,7 +151,7 @@ export default function Admin() {
                 }}
               >
                 {/* {Number(1 / gcsusdm).toFixed(5)} */}
-                $99
+                {usdtfee}
                 <MDBBadge color="success" className="mx-2">
                   {/* <MDBIcon fas icon="chart-line" /> 70.32% */}
                 </MDBBadge>
@@ -109,7 +168,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>XAUS TO USD</MDBCardTitle>{" "}
+              <MDBCardTitle>Total USDT Swap</MDBCardTitle>{" "}
               <h4
                 style={{
                   fontWeight: " 500",
@@ -118,7 +177,7 @@ export default function Admin() {
                 }}
               >
                 {/* ${xaustousd} */}
-                $100
+                {usdtswap}
                 <MDBBadge color="success" className="mx-2">
                   {/* <BiLineChart size={20}/> 59.32% */}
                 </MDBBadge>
@@ -129,7 +188,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>USDM TO USD</MDBCardTitle>
+              <MDBCardTitle>Total USDM Swap</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -138,7 +197,7 @@ export default function Admin() {
                 }}
               >
                 {/* ${usdmtousdt} */}
-                $200
+                {usdmswap}
                 <MDBBadge color="success" className="mx-2">
                   {/* <BiLineChart size={20}/> 70.32% */}
                 </MDBBadge>
@@ -149,7 +208,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>GSC TO USD</MDBCardTitle>
+              <MDBCardTitle>Total XAUS Swap</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -158,7 +217,7 @@ export default function Admin() {
                 }}
               >
                 {/* ${gcstousd} */}
-                $200
+                {xausswap}
                 <MDBBadge color="danger" className="mx-2">
                   {/* <BiLineChartDown size={20}/> 27.02% */}
                 </MDBBadge>
@@ -169,7 +228,7 @@ export default function Admin() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>XAUS TO GCS</MDBCardTitle>{" "}
+              <MDBCardTitle>Total GCS Swap</MDBCardTitle>{" "}
               <h4
                 style={{
                   fontWeight: " 500",
@@ -178,7 +237,7 @@ export default function Admin() {
                 }}
               >
                 {/* {Number(xaustogcs).toFixed(5)} */}
-                $300
+                {gcsswap}
                 <MDBBadge color="success" className="mx-2">
                   {/* <BiLineChart size={20}/> 70.32% */}
                 </MDBBadge>
@@ -196,7 +255,7 @@ export default function Admin() {
                 className="text-center"
                 style={{ fontWeight: "bold" }}
               >
-                SWAP
+                SET NEW FEE
               </MDBCardTitle>
               <MDBCardSubTitle
                 className="text-center"
@@ -205,7 +264,6 @@ export default function Admin() {
                   borderBottom: "1px solid #a5a0a0",
                 }}
               >
-                Trade tokens in an instant
               </MDBCardSubTitle>
               {
                 <>
@@ -214,6 +272,7 @@ export default function Admin() {
                     <MDBInput
                       id="form1"
                       type="number"
+                      onChange={(e)=> setFee(e.target.value)}
                       placeholder="0.0"
                       style={{ padding: "30px 20px" }}
                     />
@@ -221,8 +280,8 @@ export default function Admin() {
                 </>
               }
               <Box className="swap">
-                <Typography className="swap-button" sx={{ margin: "auto" }}>
-                  SWAP
+                <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>setnewfee()}>
+                  SUBMIT
                 </Typography>
               </Box>
             </MDBCardBody>
@@ -235,7 +294,7 @@ export default function Admin() {
                 className="text-center"
                 style={{ fontWeight: "bold" }}
               >
-                SWAP
+                SET NEW ADMIN
               </MDBCardTitle>
               <MDBCardSubTitle
                 className="text-center"
@@ -244,7 +303,7 @@ export default function Admin() {
                   borderBottom: "1px solid #a5a0a0",
                 }}
               >
-                Trade tokens in an instant
+              
               </MDBCardSubTitle>
               {
                 <>
@@ -252,22 +311,25 @@ export default function Admin() {
                     <Box className="title-area"></Box>
                     <MDBInput
                       id="form1"
-                      type="number"
-                      placeholder="0.0"
+                      onChange={(e)=> setAdmin(e.target.value)}
+                      type="text"
+                      placeholder="address"
                       style={{ padding: "30px 20px" }}
                     />
                   </Box>
                 </>
               }
               <Box className="swap">
-                <Typography className="swap-button" sx={{ margin: "auto" }}>
-                  SWAP
+                <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>setnewAdmin()}>
+                  SUBMIT
                 </Typography>
               </Box>
             </MDBCardBody>
           </MDBCard>
         </Grid>
       </Grid>
-    </Container>
+      <Toaster />
+    </Container>: ''}
+    </>
   );
 }

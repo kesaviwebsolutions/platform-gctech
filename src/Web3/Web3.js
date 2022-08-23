@@ -255,3 +255,115 @@ export const Allow =async(address)=>{
         
     }
 }
+
+export const totalGCSswap =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.totalGCSSwapped().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const totalUSDMswap =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.totalUSDMSwapped().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const totalXAUSswap =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.totalXAUSSwapped().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const totalUSDTswap =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.totalUSDTSwapped().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+export const totalUSDTfee =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.feesCollectedUSDT().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const totalGCSfee =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.feesCollectedGCS().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const totalUSDMfee =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.feesCollectedUSDM().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const totalXAUSfee =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.feesCollectedXAUS().call();
+        return Number(data/10**18).toFixed(0);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const newAdmin =async(address)=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.setAdmin(address).send({from:await getUserAddress()});
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const newFee =async(fee)=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.setFees(fee).send({from:await getUserAddress()});
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAdmin = async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.admin().call();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}

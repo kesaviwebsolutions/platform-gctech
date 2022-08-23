@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBContainer,
   MDBNavbar,
@@ -13,8 +13,9 @@ import {
 } from "mdb-react-ui-kit";
 import meta from "../images/meta.png";
 import connect from "../images/connect.svg";
+import { getAdmin } from "../Web3/Web3";
 
-export default function App({ Metamask, acount }) {
+export default function App({ Metamask, account, contractadmin }) {
   const [showBasic, setShowBasic] = useState(false);
   const [active, setActive] = useState(1);
 
@@ -44,7 +45,7 @@ export default function App({ Metamask, acount }) {
               <MDBNavbarLink
                 aria-current="page"
                 href="/"
-                className={active === 1 ? "active" : ""}
+                className={window.location.pathname == '/' ? "active" : ""}
               >
                 HOME
               </MDBNavbarLink>
@@ -55,25 +56,25 @@ export default function App({ Metamask, acount }) {
               </MDBNavbarLink>
             </MDBNavbarItem>
 
-            <MDBNavbarItem
+           {account == contractadmin ? <MDBNavbarItem
               onClick={() => {
                 setActive(3);
               }}
             >
               <MDBNavbarLink
                 href="/admin"
-                className={active === 3 ? "active" : ""}
+                className={window.location.pathname == '/admin' ? "active" : ""}
               >
                 ADMIN
               </MDBNavbarLink>
-            </MDBNavbarItem>
+            </MDBNavbarItem> : ''}
           </MDBNavbarNav>
           <button
             type="button"
             className="connectButton"
             onClick={() => Metamask()}
           >
-            {acount ? slicewallet(acount) : "Connect Wallet"}
+            {account ? slicewallet(account) : "Connect Wallet"}
           </button>
 
           {/* <div className="dropdown">

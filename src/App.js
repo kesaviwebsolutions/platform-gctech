@@ -8,6 +8,7 @@ import {
   login,
   GetChainId,
   getUserAddress,
+  getAdmin
 } from "./Web3/Web3";
 import axios from "axios";
 import Footer from "./compnents/Footer";
@@ -19,6 +20,7 @@ function App() {
   const [xausSupply, setXausSupply] = useState(0);
   const [usdmSupply, setUsdmSupply] = useState(0);
   const [gcsSupply, setGcsSupply] = useState(0);
+  const [contractadmin, setContractAdmin] = useState();
 
   useEffect(() => {
     const init = async () => {
@@ -28,6 +30,8 @@ function App() {
       setGcsSupply(gcs);
       const usdm = await USDM_Totak_Supply();
       setUsdmSupply(usdm);
+      const user = await getAdmin();
+      setContractAdmin(user);
 
       const closeprice = await axios
         .get("https://sapi.gcex.lt/v1/market/tickers", {})
@@ -176,7 +180,7 @@ function App() {
       <Footer/>
 ======= */}
       <Router>
-        <Navbar Metamask={Metamask} acount={acount} />
+        <Navbar Metamask={Metamask} account={acount} contractadmin={contractadmin} />
         {/* <Main
           gcsmaketcap={gcsmaketcap}
           gcstousd={gcstousd}
@@ -192,8 +196,19 @@ function App() {
         <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm} account={acount} xaustousd={xaustousd} /> */}
 
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route exact path="/" element={<Home 
+          gcsmaketcap={gcsmaketcap}
+          gcstousd={gcstousd}
+          gcsusdm={gcsusdm}
+          xaustousd={xaustousd}
+          xausmk={xausmk}
+          usdmtousdt={usdmtousdt}
+          usdmmarketcap={usdmmarketcap}
+          xaustogcs={xaustogcs}
+          xaustousdm={xaustousdm}
+          account={acount}
+          />} />
+          <Route path="/admin" element={<Admin account={acount} contractadmin={contractadmin}/>} />
         </Routes>
         <Footer />
       </Router>
