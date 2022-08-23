@@ -37,13 +37,13 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
   useEffect(()=>{
     const init = async()=>{
       const gcsbal = await getTokenBalancegcs(gcs);
-      setGcsBalance(gcsbal)
+      setGcsBalance(Number(gcsbal).toFixed(5))
       const usdmbal = await getTokenBalanceusdm(usdm);
-      setUsdmBalance(usdmbal);
+      setUsdmBalance(Number(usdmbal).toFixed(5));
       const xausbal = await getTokenBalancegcs(xaus);
-      setXausbalance(xausbal)
+      setXausbalance(Number(xausbal).toFixed(5))
       const usdtbal = await getTokenBalanceusdm(usdt);
-      setUsdtbalance(usdtbal);
+      setUsdtbalance(Number(usdtbal).toFixed(5));
     }
     init();
   },[acount])
@@ -53,9 +53,9 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
     if(data.status){
       notify();
       const gcsbal = await getTokenBalancegcs(gcs);
-      setGcsBalance(gcsbal)
+      setGcsBalance(Number(gcsbal).toFixed(5))
       const usdmbal = await getTokenBalanceusdm(usdm);
-      setUsdmBalance(usdmbal);
+      setUsdmBalance(Number(usdmbal).toFixed(5));
     }
   }
 
@@ -64,9 +64,9 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
     if(data.status){
       notify();
       const xausbal = await getTokenBalancegcs(xaus);
-      setXausbalance(xausbal)
+      setXausbalance(Number(xausbal).toFixed(5))
       const usdmbal = await getTokenBalanceusdm(usdm);
-      setUsdmBalance(usdmbal);
+      setUsdmBalance(Number(usdmbal).toFixed(5));
     }
   }
   const Swap3 = async()=>{
@@ -74,9 +74,9 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
     if(data.status){
       notify();
       const xausbal = await getTokenBalancegcs(xaus);
-      setXausbalance(xausbal)
+      setXausbalance(Number(xausbal).toFixed(5))
       const usdtbal = await getTokenBalanceusdm(usdt);
-      setUsdtbalance(usdtbal);
+      setUsdtbalance(Number(usdtbal).toFixed(5));
     }
   }
 
