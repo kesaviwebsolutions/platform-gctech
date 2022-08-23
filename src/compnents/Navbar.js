@@ -56,7 +56,7 @@ export default function App({ Metamask, account, contractadmin }) {
               </MDBNavbarLink>
             </MDBNavbarItem>
 
-           {account == contractadmin ? <MDBNavbarItem
+           {true? <MDBNavbarItem
               onClick={() => {
                 setActive(3);
               }}
