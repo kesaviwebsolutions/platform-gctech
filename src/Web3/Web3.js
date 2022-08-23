@@ -172,6 +172,51 @@ export const SwapToken2 = async(tab,amount,ratio,usdm,xaus)=>{
 }
 
 
+
+export const SwapToken3 = async(tab,amount,ratio,usdm,usdt)=>{
+    try {
+        const a = await towie(amount);
+        const r = await towie(ratio);
+        const b = await towie(1/ratio);    
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        
+        if(tab){
+            //usdm to usdt
+            const isApprove = await Allow(usdm);
+            if(Number(isApprove)>0){
+                console.log(a,b)
+                // const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
+                // return data;
+            }
+            else{
+                console.log(a,b)
+                // const data2 = await Approve(usdm);
+                // const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
+                // return data;
+            }
+        }
+        else{
+            //usdt to usdm
+            const isApprove = await Allow(usdt);
+            if(Number(isApprove)>0){
+                console.log(a,r)
+            //   const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
+            //   return data;
+            }
+            else{
+                console.log(a,r)
+                // await Approve(usdt);
+                // const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
+                // return data;
+            }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+
 export const getTokenBalancegcs =async(address)=>{
     try {
         const contract = new web3.eth.Contract(tokenBalance, address);

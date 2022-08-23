@@ -20,14 +20,18 @@ const notify = () => toast('Swap Success');
 const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
 const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
 const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
+const usdt = "";
 
-export default function Swap({gcsusdm, xaustousdm, acount}) {
+export default function Swap({gcsusdm, xaustousdm, acount, usdmtousdt}) {
   const [swap, setSwap] = useState(true);
   const [swap2, setSwap2] = useState(true);
+  const [swap3, setSwap3] = useState(true);
   const [gcsBalance, setGcsBalance] = useState(0);
   const [usdmBalance, setUsdmBalance] = useState(0);
   const [amount, setAmount] = useState(0)
   const [amount2, setAmount2] = useState(0)
+  const [amount3, setAmount3] = useState(0)
+  const [usdtbal, setUsdtbalance] = useState(0);
   const [xausbal, setXausbalance] = useState(0)
 
   useEffect(()=>{
@@ -63,6 +67,16 @@ export default function Swap({gcsusdm, xaustousdm, acount}) {
       setUsdmBalance(usdmbal);
     }
   }
+  const Swap3 = async()=>{
+    const data = await SwapToken2(swap3,amount3,usdmtousdt,usdm,usdt);
+    if(data.status){
+      notify();
+      const xausbal = await getTokenBalancegcs(xaus);
+      setXausbalance(xausbal)
+      const usdmbal = await getTokenBalanceusdm(usdm);
+      setUsdmBalance(usdmbal);
+    }
+  }
 
 
 
@@ -81,6 +95,15 @@ export default function Swap({gcsusdm, xaustousdm, acount}) {
     }
     else{
       setAmount2(xausbal)
+    }
+  }
+
+  const maxforgcsusdm3 = ()=>{
+    if(swap3){
+      setAmount3(usdmBalance)
+    }
+    else{
+      setAmount3(usdtbal)
     }
   }
 
@@ -230,6 +253,80 @@ export default function Swap({gcsusdm, xaustousdm, acount}) {
                 }
                 <Box className="swap">
                   <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>Swap2()}>
+                    SWAP
+                  </Typography>
+                </Box>
+              </MDBCardBody>
+            </MDBCard>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6} xl={6}>
+            <MDBCard className="my-5 mx-3">
+              <MDBCardBody>
+                <MDBCardTitle
+                  className="text-center"
+                  style={{ fontWeight: "bold" }}
+                >
+                  SWAP
+                </MDBCardTitle>
+                <MDBCardSubTitle
+                  className="text-center"
+                  style={{
+                    color: "#787373",
+                    borderBottom: "1px solid #a5a0a0",
+                  }}
+                >
+                  Trade tokens in an instant
+                </MDBCardSubTitle>
+                {
+                  <>
+                    <Box className="position-relative">
+                      <Box className="title-area">
+                        <Typography
+                          sx={{ margin: "10px 0px", fontWeight: "500" }}
+                        >
+                          {swap3 ? "USDM" : "USDT"}
+                        </Typography>
+                        <Typography>Balance : {swap3 ? usdmBalance : usdtbal}</Typography>
+                      </Box>
+                      <MDBInput
+                        id="form1"
+                        type="number"
+                        value={amount3}
+                        onChange={(e)=>setAmount3(e.target.value)}
+                        placeholder="0.0"
+                        style={{ padding: "30px 20px" }}
+                      />
+                      <Typography className="max-button" onClick={()=>maxforgcsusdm3()}> MAX</Typography>
+                    </Box>
+                    <MDBIcon
+                      fas
+                      icon="arrows-alt-v"
+                      className="swap-icon"
+                      onClick={() => setSwap3(!swap3)}
+                    />
+                    <Box className="position-relative">
+                      <Box className="title-area">
+                        <Typography
+                          sx={{ margin: "10px 0px", fontWeight: "500" }}
+                        >
+                          {swap3 ? "USDT" : "USDM"}
+                        </Typography>
+                        <Typography>Balance : {swap3 ? usdtbal : usdmBalance}</Typography>
+                      </Box>
+                      <MDBInput
+                        id="form1"
+                        disabled={true}
+                        value={swap3 ? (amount3*(1/usdmtousdt)) : (amount3*usdmtousdt)}
+                        type="number"
+                        placeholder="0.0"
+                        style={{ padding: "30px 20px" }}
+                      />
+                    </Box>
+                  </>
+                }
+                <Box className="swap">
+                  <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>Swap3()}>
                     SWAP
                   </Typography>
                 </Box>
