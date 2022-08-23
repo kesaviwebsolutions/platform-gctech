@@ -13,7 +13,7 @@ import {
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import toast, { Toaster } from 'react-hot-toast';
-import { totalGCSfee, totalUSDMfee, totalUSDTfee, totalXAUSfee, totalGCSswap, totalUSDTswap, totalUSDMswap, totalXAUSswap, newAdmin, newFee } from "./../../Web3/Web3"
+import { totalGCSfee, totalUSDMfee, WithdrawEth, totalUSDTfee, totalXAUSfee, totalGCSswap, totalUSDTswap, totalUSDMswap, totalXAUSswap, newAdmin, newFee, Withdrawtoken } from "./../../Web3/Web3"
 
 const notify = (msg) => toast(msg);
 
@@ -31,6 +31,8 @@ export default function Admin({account, contractadmin}) {
   const [fee, setFee] = useState(0);
   const [admin, setAdmin] = useState();
   const [user, setUser] = useState(false);
+  const [token, setToken] = useState();
+  const [tokenamount, setTokenAmount] = useState();
 
   useEffect(()=>{
     const init =async()=>{
@@ -69,6 +71,19 @@ export default function Admin({account, contractadmin}) {
     const data = await newFee(fee)
     if(data.status){
       notify("Fee has updated")
+    }
+  }
+  const reoverEth =async()=>{
+    const data = await WithdrawEth()
+    if(data.status){
+      notify("Success")
+    }
+  }
+
+  const reovertoken =async()=>{
+    const data = await Withdrawtoken(token,tokenamount)
+    if(data.status){
+      notify("Success")
     }
   }
 
@@ -247,7 +262,7 @@ export default function Admin({account, contractadmin}) {
         </Grid>
       </Grid>
 
-      {account == contractadmin ? <Grid container spacing={2}>
+      {account != contractadmin ? <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={6} xl={6}>
           <MDBCard className="my-5 mx-3">
             <MDBCardBody>
@@ -322,6 +337,62 @@ export default function Admin({account, contractadmin}) {
               <Box className="swap">
                 <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>setnewAdmin()}>
                   SUBMIT
+                </Typography>
+              </Box>
+            </MDBCardBody>
+          </MDBCard>
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} xl={6}>
+          <MDBCard className="my-5 mx-3">
+            <MDBCardBody>
+              <MDBCardTitle
+                className="text-center"
+                style={{ fontWeight: "bold" }}
+              >
+                ROCOVER ASSETS
+              </MDBCardTitle>
+              <MDBCardSubTitle
+                className="text-center"
+                style={{
+                  color: "#787373",
+                  borderBottom: "1px solid #a5a0a0",
+                }}
+              >
+              
+              </MDBCardSubTitle>
+              {
+                <>
+                  <Box className="position-relative">
+                    <Box className="title-area"></Box>
+                    <MDBInput
+                      id="form1"
+                      onChange={(e)=> setToken(e.target.value)}
+                      type="text"
+                      placeholder="Token address"
+                      style={{ padding: "30px 20px" }}
+                    />
+                  </Box>
+                  <br/>
+                  <Box className="position-relative">
+                    <Box className="title-area"></Box>
+                    <MDBInput
+                      id="form1"
+                      onChange={(e)=> setTokenAmount(e.target.value)}
+                      type="number"
+                      placeholder="Amount"
+                      style={{ padding: "30px 20px" }}
+                    />
+                  </Box>
+                </>
+              }
+              <Box className="swap">
+                <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>reovertoken()}>
+                  SUBMIT
+                </Typography>
+              </Box>
+              <Box className="swap">
+                <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>reoverEth()}>
+                  RECOVER ONLY ETH
                 </Typography>
               </Box>
             </MDBCardBody>

@@ -367,3 +367,24 @@ export const getAdmin = async()=>{
         console.log(error)
     }
 }
+
+export const WithdrawEth =async()=>{
+    try {
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.recoverLostETH().send({from:await getUserAddress()}).call();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const Withdrawtoken =async(token,amount)=>{
+    try {
+        const a = await towie(amount)
+        const contract = new web3.eth.Contract(swapabi, swapaddress);
+        const data = await contract.methods.WithdrawOtherTokens(token,a).send({from:await getUserAddress()});
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
