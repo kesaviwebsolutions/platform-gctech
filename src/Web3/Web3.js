@@ -17,9 +17,9 @@ const abi = [
         type: "function",
       }
 ]
-const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
-const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
-const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
+const usdm = "0xC299d796Edf61C2230F2212157C4A2bFe8fCb17a"
+const gcs = "0xdeB4054d11915De4A6aFB7F2000d4c04525E4396"
+const xaus = "0x33675d969eECB85A16Dc55F21D88D914a5e633FE"
 
 export const login =async()=> {
     const data = await window.ethereum.enable();
@@ -173,7 +173,7 @@ export const SwapToken2 = async(tab,amount,ratio,usdm,xaus)=>{
 
 
 
-export const SwapToken3 = async(tab,amount,ratio,usdm,usdt)=>{
+export const SwapToken3 = async(tab,amount,ratio,xaus,usdt)=>{
     try {
         const a = await towie(amount);
         const r = await towie(ratio);
@@ -181,33 +181,33 @@ export const SwapToken3 = async(tab,amount,ratio,usdm,usdt)=>{
         const contract = new web3.eth.Contract(swapabi, swapaddress);
         
         if(tab){
-            //usdm to usdt
-            const isApprove = await Allow(usdm);
+            //xaus to usdt
+            const isApprove = await Allow(xaus);
             if(Number(isApprove)>0){
-                console.log(a,b)
-                // const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
-                // return data;
+                console.log(a,r,tab)
+                const data = await contract.methods.swapXAUSTOUSDT(a,r).send({from:await getUserAddress()});
+                return data;
             }
             else{
-                console.log(a,b)
-                // const data2 = await Approve(usdm);
-                // const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
-                // return data;
+                console.log(a,r)
+                const data2 = await Approve(xaus);
+                const data = await contract.methods.swapXAUSTOUSDT(a,r).send({from:await getUserAddress()});
+                return data;
             }
         }
         else{
-            //usdt to usdm
+            //usdt to xaus
             const isApprove = await Allow(usdt);
             if(Number(isApprove)>0){
-                console.log(a,r)
-            //   const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
-            //   return data;
+                console.log(a,b,tab)
+              const data = await contract.methods.swapUSDTTOXAUS(a,b).send({from:await getUserAddress()});
+              return data;
             }
             else{
-                console.log(a,r)
-                // await Approve(usdt);
-                // const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
-                // return data;
+                console.log(a,b)
+                await Approve(usdt);
+                const data = await contract.methods.swapUSDTTOXAUS(a,b).send({from:await getUserAddress()});
+                return data;
             }
         }
     } catch (error) {

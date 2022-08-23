@@ -12,17 +12,17 @@ import { Button, ButtonBase, Grid, Typography } from "@mui/material";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { Box, Container } from "@mui/system";
 import toast, { Toaster } from 'react-hot-toast';
-import { getTokenBalancegcs, getTokenBalanceusdm, SwapToken, SwapToken2 } from "../Web3/Web3";
+import { getTokenBalancegcs, getTokenBalanceusdm, SwapToken, SwapToken2,SwapToken3 } from "../Web3/Web3";
 
 
 const notify = () => toast('Swap Success');
 
-const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
-const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
-const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
-const usdt = "";
+const usdm = "0xC299d796Edf61C2230F2212157C4A2bFe8fCb17a"
+const gcs = "0xdeB4054d11915De4A6aFB7F2000d4c04525E4396"
+const xaus = "0x33675d969eECB85A16Dc55F21D88D914a5e633FE"
+const usdt = "0xFCc496973bdBe5fD4C6655DA6fA8C100701bBDDB";
 
-export default function Swap({gcsusdm, xaustousdm, acount, usdmtousdt}) {
+export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
   const [swap, setSwap] = useState(true);
   const [swap2, setSwap2] = useState(true);
   const [swap3, setSwap3] = useState(true);
@@ -42,6 +42,8 @@ export default function Swap({gcsusdm, xaustousdm, acount, usdmtousdt}) {
       setUsdmBalance(usdmbal);
       const xausbal = await getTokenBalancegcs(xaus);
       setXausbalance(xausbal)
+      const usdtbal = await getTokenBalanceusdm(usdt);
+      setUsdtbalance(usdtbal);
     }
     init();
   },[acount])
@@ -68,13 +70,13 @@ export default function Swap({gcsusdm, xaustousdm, acount, usdmtousdt}) {
     }
   }
   const Swap3 = async()=>{
-    const data = await SwapToken2(swap3,amount3,usdmtousdt,usdm,usdt);
+    const data = await SwapToken3(swap3,amount3,xaustousd,xaus,usdt);
     if(data.status){
       notify();
       const xausbal = await getTokenBalancegcs(xaus);
       setXausbalance(xausbal)
-      const usdmbal = await getTokenBalanceusdm(usdm);
-      setUsdmBalance(usdmbal);
+      const usdtbal = await getTokenBalanceusdm(usdt);
+      setUsdtbalance(usdtbal);
     }
   }
 
@@ -100,7 +102,7 @@ export default function Swap({gcsusdm, xaustousdm, acount, usdmtousdt}) {
 
   const maxforgcsusdm3 = ()=>{
     if(swap3){
-      setAmount3(usdmBalance)
+      setAmount3(xausbal)
     }
     else{
       setAmount3(usdtbal)
@@ -285,9 +287,9 @@ export default function Swap({gcsusdm, xaustousdm, acount, usdmtousdt}) {
                         <Typography
                           sx={{ margin: "10px 0px", fontWeight: "500" }}
                         >
-                          {swap3 ? "USDM" : "USDT"}
+                          {swap3 ? "XAUS" : "USDT"}
                         </Typography>
-                        <Typography>Balance : {swap3 ? usdmBalance : usdtbal}</Typography>
+                        <Typography>Balance : {swap3 ? xausbal : usdtbal}</Typography>
                       </Box>
                       <MDBInput
                         id="form1"
@@ -310,14 +312,14 @@ export default function Swap({gcsusdm, xaustousdm, acount, usdmtousdt}) {
                         <Typography
                           sx={{ margin: "10px 0px", fontWeight: "500" }}
                         >
-                          {swap3 ? "USDT" : "USDM"}
+                          {swap3 ? "USDT" : "XAUS"}
                         </Typography>
-                        <Typography>Balance : {swap3 ? usdtbal : usdmBalance}</Typography>
+                        <Typography>Balance : {swap3 ? usdtbal : xausbal}</Typography>
                       </Box>
                       <MDBInput
                         id="form1"
                         disabled={true}
-                        value={swap3 ? (amount3*(1/usdmtousdt)) : (amount3*usdmtousdt)}
+                        value={swap3 ? (amount3*(xaustousd)) : (amount3*(1/xaustousd))}
                         type="number"
                         placeholder="0.0"
                         style={{ padding: "30px 20px" }}

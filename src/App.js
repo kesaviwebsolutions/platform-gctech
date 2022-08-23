@@ -132,10 +132,10 @@ function App() {
       }
       const id = await GetChainId();
       console.log(id);
-      if (Number(id) != 56) {
+      if (Number(id) != 3) {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x38" }], // chainId must be in hexadecimal numbers
+          params: [{ chainId: "0x3" }], // chainId must be in hexadecimal numbers
         });
       }
     };
@@ -176,7 +176,7 @@ function App() {
         Metamask={Metamask}
         acount={acount}/>
         <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm} account={acount}/>
-        <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm} account={acount}/>
+        <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm} account={acount} xaustousd={xaustousd} />
       <Footer/>
     </div>
   );

@@ -1,4 +1,4 @@
-export const swapaddress = "0xab7c674C967Ea1743B2ab980cEd678FE448FCE97";
+export const swapaddress = "0xa8859633481b96512103f0A3f7977A8A4100d7BA";
 
 export const tokenBalance = [
   {
@@ -30,55 +30,22 @@ export const tokenBalance = [
   },
 ];
 
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
 export const swapabi = [
   {
-    inputs: [
-      { internalType: "address", name: "_USDM", type: "address" },
-      { internalType: "address", name: "_GCS", type: "address" },
-      { internalType: "address", name: "_XAUS", type: "address" },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [],
-    name: "GCS",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "USDM",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "_token", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
-    ],
-    name: "WithdrawOtherTokens",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "XAUS",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getFees",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "recoverLostETH",
     outputs: [],
@@ -86,14 +53,26 @@ export const swapabi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "_admin", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "_admin",
+        type: "address",
+      },
+    ],
     name: "setAdmin",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "_Fees", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "_Fees",
+        type: "uint8",
+      },
+    ],
     name: "setFees",
     outputs: [],
     stateMutability: "nonpayable",
@@ -101,7 +80,11 @@ export const swapabi = [
   },
   {
     inputs: [
-      { internalType: "contract IERC20", name: "_GCS", type: "address" },
+      {
+        internalType: "contract IERC20",
+        name: "_GCS",
+        type: "address",
+      },
     ],
     name: "setGCS",
     outputs: [],
@@ -110,7 +93,11 @@ export const swapabi = [
   },
   {
     inputs: [
-      { internalType: "contract IERC20", name: "_USDM", type: "address" },
+      {
+        internalType: "contract IERC20",
+        name: "_USDM",
+        type: "address",
+      },
     ],
     name: "setUSDM",
     outputs: [],
@@ -119,7 +106,24 @@ export const swapabi = [
   },
   {
     inputs: [
-      { internalType: "contract IERC20", name: "_XAUS", type: "address" },
+      {
+        internalType: "contract IERC20",
+        name: "_USDT",
+        type: "address",
+      },
+    ],
+    name: "setUSDT",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "contract IERC20",
+        name: "_XAUS",
+        type: "address",
+      },
     ],
     name: "setXAUS",
     outputs: [],
@@ -128,88 +132,186 @@ export const swapabi = [
   },
   {
     inputs: [
-      { internalType: "uint256", name: "amountGCS", type: "uint256" },
-      { internalType: "uint256", name: "_ratioGCSUSDM", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "amountGCS",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_ratioGCSUSDM",
+        type: "uint256",
+      },
     ],
     name: "swapGCSTOUSDM",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "amountUSDM", type: "uint256" },
-      { internalType: "uint256", name: "_ratioUSDMGCS", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "amountUSDM",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_ratioUSDMGCS",
+        type: "uint256",
+      },
     ],
     name: "swapUSDMTOGCS",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "amountUSDM", type: "uint256" },
-      { internalType: "uint256", name: "_ratioUSDMXAUS", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "amountUSDM",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_ratioUSDMXAUS",
+        type: "uint256",
+      },
     ],
     name: "swapUSDMTOXAUS",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "amountXAUS", type: "uint256" },
-      { internalType: "uint256", name: "_ratioXAUSUSDM", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "amountUSDT",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_ratioUSDTXAUS",
+        type: "uint256",
+      },
+    ],
+    name: "swapUSDTTOXAUS",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "amountXAUS",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_ratioXAUSUSDM",
+        type: "uint256",
+      },
     ],
     name: "swapXAUSTOUSDM",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
-];
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-
-export const swap2address = "0x4c7c6a246A60D19bA8072d2d5D28d8cF5dafD7a2";
-export const swapabi2 = [
   {
     inputs: [
-      { internalType: "address", name: "_USDM", type: "address" },
-      { internalType: "address", name: "_GCS", type: "address" },
-      { internalType: "address", name: "_XAUS", type: "address" },
+      {
+        internalType: "uint256",
+        name: "amountXAUS",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_ratioXAUSUSDT",
+        type: "uint256",
+      },
+    ],
+    name: "swapXAUSTOUSDT",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_USDM",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_GCS",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_XAUS",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_USDT",
+        type: "address",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
   },
   {
-    inputs: [],
-    name: "GCS",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "USDM",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
-      { internalType: "address", name: "_token", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
+      {
+        internalType: "address",
+        name: "_token",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
     ],
     name: "WithdrawOtherTokens",
     outputs: [],
@@ -218,104 +320,184 @@ export const swapabi2 = [
   },
   {
     inputs: [],
+    name: "admin",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "fees",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "feesCollectedGCS",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "feesCollectedUSDM",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "feesCollectedUSDT",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "feesCollectedXAUS",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "GCS",
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalGCSSwapped",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalUSDMSwapped",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalUSDTSwapped",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalXAUSSwapped",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "USDM",
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "USDT",
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "XAUS",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getFees",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "recoverLostETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "address", name: "_admin", type: "address" }],
-    name: "setAdmin",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "_Fees", type: "uint256" }],
-    name: "setFees",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "contract IERC20", name: "_GCS", type: "address" },
-    ],
-    name: "setGCS",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "contract IERC20", name: "_USDM", type: "address" },
-    ],
-    name: "setUSDM",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "contract IERC20", name: "_XAUS", type: "address" },
-    ],
-    name: "setXAUS",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256", name: "amountGCS", type: "uint256" },
-      { internalType: "uint256", name: "_ratioGCSUSDM", type: "uint256" },
-    ],
-    name: "swapGCSTOUSDM",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256", name: "amountUSDM", type: "uint256" },
-      { internalType: "uint256", name: "_ratioUSDMGCS", type: "uint256" },
-    ],
-    name: "swapUSDMTOGCS",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256", name: "amountUSDM", type: "uint256" },
-      { internalType: "uint256", name: "_ratioUSDMXAUS", type: "uint256" },
-    ],
-    name: "swapUSDMTOXAUS",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256", name: "amountXAUS", type: "uint256" },
-      { internalType: "uint256", name: "_ratioXAUSUSDM", type: "uint256" },
-    ],
-    name: "swapXAUSTOUSDM",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "nonpayable",
     type: "function",
   },
 ];
