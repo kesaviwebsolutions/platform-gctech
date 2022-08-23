@@ -1,7 +1,5 @@
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./compnents/Navbar";
-import logo from "./logo.svg";
-import "./App.css";
 import { useEffect, useState } from "react";
 import {
   XAUs_Totak_Supply,
@@ -9,12 +7,13 @@ import {
   GCS_Totak_Supply,
   login,
   GetChainId,
-  getUserAddress
+  getUserAddress,
 } from "./Web3/Web3";
 import axios from "axios";
-import Main from "./compnents/Main";
-import Swap from "./compnents/Swap";
 import Footer from "./compnents/Footer";
+import Admin from "./compnents/pages/Admin";
+import Home from "./compnents/pages/Home";
+import "./App.css";
 
 function App() {
   const [xausSupply, setXausSupply] = useState(0);
@@ -90,37 +89,37 @@ function App() {
     init();
   }, []);
   const [gcsmaketcap, setGcsSupplyCap] = useState(0);
-  const [gcstousd, setGcstoUsd] = useState(0)
-  const [gcsusdm, setGcsusdm] = useState(0)
-  const [xaustousd, setXaustoUsd] = useState(0)
+  const [gcstousd, setGcstoUsd] = useState(0);
+  const [gcsusdm, setGcsusdm] = useState(0);
+  const [xaustousd, setXaustoUsd] = useState(0);
   const [xausmk, setXausmk] = useState(0);
   const [usdmtousdt, setUsdmtousdt] = useState(0);
   const [usdmmarketcap, setUsdmMarketcap] = useState(0);
   const [xaustogcs, setXausGcs] = useState(0);
   const [xaustousdm, setXaustousdm] = useState(0);
 
-
   const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo) => {
     const gcsmk = (Number(closeprice) * 5000000).toFixed(0);
-    setGcsSupplyCap(gcsmk)
+    setGcsSupplyCap(gcsmk);
     const gcstousd = closeprice;
-    setGcstoUsd(closeprice)
+    setGcstoUsd(closeprice);
     const gcsusdm = (mmk * closeprice) / govt;
-    setGcsusdm(gcsusdm)
+    setGcsusdm(gcsusdm);
     const xaustousd = ((xau / 31.1025) * 0.425 * 1.03).toFixed(5);
-    setXaustoUsd(xaustousd)
-    const xausmk = Number(xaus * ((xau / 31.1025) * 0.425 * 1.03).toFixed(5)).toFixed(0);
-    setXausmk(xausmk)
+    setXaustoUsd(xaustousd);
+    const xausmk = Number(
+      xaus * ((xau / 31.1025) * 0.425 * 1.03).toFixed(5)
+    ).toFixed(0);
+    setXausmk(xausmk);
     const usdmtousdt = Number(closeprice / gcsusdm).toFixed(5);
-    setUsdmtousdt(usdmtousdt)
+    setUsdmtousdt(usdmtousdt);
     const usdmmk = 755030 * closeprice;
-    setUsdmMarketcap(usdmmk)
+    setUsdmMarketcap(usdmmk);
     const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03) / gcstousd).toFixed(5);
-    setXausGcs(xaustogcs)
-    const xaustousdm = Number(xaustousd/usdmtousdt).toFixed(5);
-    setXaustousdm(xaustousdm)
+    setXausGcs(xaustogcs);
+    const xaustousdm = Number(xaustousd / usdmtousdt).toFixed(5);
+    setXaustousdm(xaustousdm);
   };
-
 
   const [user, setUser] = useState();
   const [acount, setAccount] = useState();
@@ -143,12 +142,10 @@ function App() {
     init();
   }, []);
 
-
-
   const Metamask = async () => {
     await login();
     const add = await getUserAddress();
-    console.log("Metamask",add)
+    console.log("Metamask", add);
     setAccount(add);
   };
 
@@ -168,16 +165,38 @@ function App() {
     });
   } catch (error) {}
 
-
-
   return (
     <div className="App">
+      {/* <<<<<<< Updated upstream
       <Navbar
         Metamask={Metamask}
         acount={acount}/>
         <Main gcsmaketcap={gcsmaketcap} gcstousd={gcstousd} gcsusdm={gcsusdm} xaustousd={xaustousd} xausmk={xausmk} usdmtousdt={usdmtousdt} usdmmarketcap={usdmmarketcap} xaustogcs={xaustogcs} xaustousdm={xaustousdm} account={acount}/>
         <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm} account={acount} xaustousd={xaustousd} />
       <Footer/>
+======= */}
+      <Router>
+        <Navbar Metamask={Metamask} acount={acount} />
+        {/* <Main
+          gcsmaketcap={gcsmaketcap}
+          gcstousd={gcstousd}
+          gcsusdm={gcsusdm}
+          xaustousd={xaustousd}
+          xausmk={xausmk}
+          usdmtousdt={usdmtousdt}
+          usdmmarketcap={usdmmarketcap}
+          xaustogcs={xaustogcs}
+          xaustousdm={xaustousdm}
+          account={acount}
+        />
+        <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm} account={acount} xaustousd={xaustousd} /> */}
+
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }

@@ -14,15 +14,15 @@ import {
 import meta from "../images/meta.png";
 import connect from "../images/connect.svg";
 
-export default function App({Metamask,acount}) {
+export default function App({ Metamask, acount }) {
   const [showBasic, setShowBasic] = useState(false);
   const [active, setActive] = useState(1);
 
-  const slicewallet = (add) =>{
-    const first = add.slice(0,5);
-    const second = add.slice(37)
+  const slicewallet = (add) => {
+    const first = add.slice(0, 5);
+    const second = add.slice(37);
     return first + "..." + second;
-  }
+  };
 
   return (
     <MDBNavbar expand="lg" light bgColor="transparent">
@@ -43,14 +43,14 @@ export default function App({Metamask,acount}) {
             <MDBNavbarItem onClick={() => setActive(1)}>
               <MDBNavbarLink
                 aria-current="page"
-                href="#"
+                href="/"
                 className={active === 1 ? "active" : ""}
               >
                 HOME
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem onClick={() => setActive(2)}>
-              <MDBNavbarLink href="#" className={active === 2 ? "active" : ""}>
+              <MDBNavbarLink href="/" className={active === 2 ? "active" : ""}>
                 STAKING
               </MDBNavbarLink>
             </MDBNavbarItem>
@@ -60,7 +60,10 @@ export default function App({Metamask,acount}) {
                 setActive(3);
               }}
             >
-              <MDBNavbarLink href="#" className={active === 3 ? "active" : ""}>
+              <MDBNavbarLink
+                href="/admin"
+                className={active === 3 ? "active" : ""}
+              >
                 ADMIN
               </MDBNavbarLink>
             </MDBNavbarItem>
@@ -68,9 +71,9 @@ export default function App({Metamask,acount}) {
           <button
             type="button"
             className="connectButton"
-            onClick={()=>Metamask()}
+            onClick={() => Metamask()}
           >
-            {acount ? slicewallet(acount)  : "Connect Wallet"}
+            {acount ? slicewallet(acount) : "Connect Wallet"}
           </button>
 
           {/* <div className="dropdown">
