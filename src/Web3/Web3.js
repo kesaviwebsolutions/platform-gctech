@@ -17,9 +17,9 @@ const abi = [
         type: "function",
       }
 ]
-const usdm = "0xC299d796Edf61C2230F2212157C4A2bFe8fCb17a"
-const gcs = "0xdeB4054d11915De4A6aFB7F2000d4c04525E4396"
-const xaus = "0x33675d969eECB85A16Dc55F21D88D914a5e633FE"
+const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
+const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
+const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
 
 export const login =async()=> {
     const data = await window.ethereum.enable();

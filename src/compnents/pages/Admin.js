@@ -262,6 +262,95 @@ export default function Admin({account, contractadmin}) {
         </Grid>
       </Grid>
 
+      <Grid
+        container
+        spacing={2}
+        sx={{ marginTop: "20px", padding: "10px 20px" }}
+      >
+        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle>USDT Swapped</MDBCardTitle>{" "}
+              <h4
+                style={{
+                  fontWeight: " 500",
+                  color: "#000000",
+                  fontSize: "20px",
+                }}
+              >
+                {/* ${xaustousd} */}
+                {usdtswap}
+                <MDBBadge color="success" className="mx-2">
+                  {/* <BiLineChart size={20}/> 59.32% */}
+                </MDBBadge>
+              </h4>
+            </MDBCardBody>
+          </MDBCard>
+        </Grid>
+
+
+        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle>USDM Balance</MDBCardTitle>
+              <h4
+                style={{
+                  fontWeight: " 500",
+                  color: "#000000",
+                  fontSize: "20px",
+                }}
+              >
+                {/* ${usdmtousdt} */}
+                {usdmswap}
+                <MDBBadge color="success" className="mx-2">
+                  {/* <BiLineChart size={20}/> 70.32% */}
+                </MDBBadge>
+              </h4>
+            </MDBCardBody>
+          </MDBCard>
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle>XAUS Balance</MDBCardTitle>
+              <h4
+                style={{
+                  fontWeight: " 500",
+                  color: "#000000",
+                  fontSize: "20px",
+                }}
+              >
+                {/* ${gcstousd} */}
+                {xausswap}
+                <MDBBadge color="danger" className="mx-2">
+                  {/* <BiLineChartDown size={20}/> 27.02% */}
+                </MDBBadge>
+              </h4>
+            </MDBCardBody>
+          </MDBCard>
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle>GCS Balance</MDBCardTitle>{" "}
+              <h4
+                style={{
+                  fontWeight: " 500",
+                  color: "#000000",
+                  fontSize: "20px",
+                }}
+              >
+                {/* {Number(xaustogcs).toFixed(5)} */}
+                {gcsswap}
+                <MDBBadge color="success" className="mx-2">
+                  {/* <BiLineChart size={20}/> 70.32% */}
+                </MDBBadge>
+              </h4>
+            </MDBCardBody>
+          </MDBCard>
+        </Grid>
+      </Grid>
+
       {account == contractadmin ? <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={6} xl={6}>
           <MDBCard className="my-5 mx-3">
