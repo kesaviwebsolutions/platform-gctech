@@ -71,7 +71,7 @@ export default function App({ Metamask, account, contractadmin }) {
             {account == contractadmin ||
             account == "0xD9E0f712652589584B035Db1cb44A79F2eA2389F" ||
             account == "0x149b65e2EB31c196F9C2407E0A88a9cF1F71bd35" ||
-            account == "0xdBd21416Da1207Bfb66BDf3baBE16538f112b706" ? (
+            account == "0x9929BbE55e79cAC1003Dc4c9cD2e911CbaAd532D" ? (
               <MDBNavbarItem
                 onClick={() => {
                   setActive(2);
@@ -87,6 +87,14 @@ export default function App({ Metamask, account, contractadmin }) {
                   ADMIN
                 </Link>
                 {/* <MDBNavbarLink
+=======
+           {account == contractadmin || account == "0xD9E0f712652589584B035Db1cb44A79F2eA2389F" || account == "0x149b65e2EB31c196F9C2407E0A88a9cF1F71bd35" || account == "0x9929BbE55e79cAC1003Dc4c9cD2e911CbaAd532D" ? <MDBNavbarItem
+              onClick={() => {
+                setActive(3);
+              }}
+            >
+              <MDBNavbarLink
+>>>>>>> 240bc07e96ac4dc404e01848c3719b5a2021b0c6
                 href="/admin"
                 className={window.location.pathname == '/admin' ? "active" : ""}
               >
