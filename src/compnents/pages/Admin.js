@@ -349,7 +349,7 @@ export default function Admin({account, contractadmin}) {
                 className="text-center"
                 style={{ fontWeight: "bold" }}
               >
-                ROCOVER ASSETS
+                RECOVER ASSETS
               </MDBCardTitle>
               <MDBCardSubTitle
                 className="text-center"
@@ -392,7 +392,7 @@ export default function Admin({account, contractadmin}) {
               </Box>
               <Box className="swap">
                 <Typography className="swap-button" sx={{ margin: "auto" }} onClick={()=>reoverEth()}>
-                  RECOVER ONLY ETH
+                  RECOVER ONLY BNB
                 </Typography>
               </Box>
             </MDBCardBody>
