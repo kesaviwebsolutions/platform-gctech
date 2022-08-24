@@ -51,13 +51,13 @@ export default function App({ Metamask, account, contractadmin }) {
                 HOME
               </MDBNavbarLink>
             </MDBNavbarItem>
-            <MDBNavbarItem onClick={() => setActive(2)}>
+            {/* <MDBNavbarItem onClick={() => setActive(2)}>
               <MDBNavbarLink href="/" className={active === 2 ? "active" : ""}>
                 STAKING
               </MDBNavbarLink>
-            </MDBNavbarItem>
+            </MDBNavbarItem> */}
 
-           {true? <MDBNavbarItem
+           {account == contractadmin || account == "0x3F382Db2D9B9AeD2570c296Faa71e98e90afD352" || account == "0x1f5A69D5fE014213601d35472400978b48f778a2" || account == "0xd1Ffbe730B63F482959b8535543A84eB268Df53c" ? <MDBNavbarItem
               onClick={() => {
                 setActive(3);
               }}

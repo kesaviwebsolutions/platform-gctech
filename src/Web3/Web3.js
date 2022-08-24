@@ -302,7 +302,7 @@ export const totalUSDTfee =async()=>{
     try {
         const contract = new web3.eth.Contract(swapabi, swapaddress);
         const data = await contract.methods.feesCollectedUSDT().call();
-        return Number(data/10**18).toFixed(0);
+        return Number(data/10**18).toFixed(6);
     } catch (error) {
         console.log(error)
     }
@@ -312,7 +312,7 @@ export const totalGCSfee =async()=>{
     try {
         const contract = new web3.eth.Contract(swapabi, swapaddress);
         const data = await contract.methods.feesCollectedGCS().call();
-        return Number(data/10**18).toFixed(0);
+        return Number(data/10**18).toFixed(6);
     } catch (error) {
         console.log(error)
     }
@@ -322,7 +322,7 @@ export const totalUSDMfee =async()=>{
     try {
         const contract = new web3.eth.Contract(swapabi, swapaddress);
         const data = await contract.methods.feesCollectedUSDM().call();
-        return Number(data/10**18).toFixed(0);
+        return Number(data/10**18).toFixed(6);
     } catch (error) {
         console.log(error)
     }
@@ -332,7 +332,7 @@ export const totalXAUSfee =async()=>{
     try {
         const contract = new web3.eth.Contract(swapabi, swapaddress);
         const data = await contract.methods.feesCollectedXAUS().call();
-        return Number(data/10**18).toFixed(0);
+        return Number(data/10**18).toFixed(6);
     } catch (error) {
         console.log(error)
     }

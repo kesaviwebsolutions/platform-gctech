@@ -12,7 +12,8 @@ import { Button, ButtonBase, Grid, Typography } from "@mui/material";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { Box, Container } from "@mui/system";
 import toast, { Toaster } from 'react-hot-toast';
-import { getTokenBalancegcs, getTokenBalanceusdm, SwapToken, SwapToken2,SwapToken3 } from "../Web3/Web3";
+import { AiOutlineSwap } from "react-icons/ai"
+import { getTokenBalancegcs, getTokenBalanceusdm, SwapToken, SwapToken2, SwapToken3 } from "../Web3/Web3";
 
 
 const notify = () => toast('Swap Success');
@@ -120,7 +121,7 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
                   className="text-center"
                   style={{ fontWeight: "bold" }}
                 >
-                  SWAP
+                  GCS <AiOutlineSwap/> USDM
                 </MDBCardTitle>
                 <MDBCardSubTitle
                   className="text-center"
@@ -129,7 +130,7 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
                     borderBottom: "1px solid #a5a0a0",
                   }}
                 >
-                  Trade tokens in an instant
+                
                 </MDBCardSubTitle>
                 {
                   <>
@@ -195,7 +196,7 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
                   className="text-center"
                   style={{ fontWeight: "bold" }}
                 >
-                  SWAP
+                 USDM <AiOutlineSwap/> XAUS
                 </MDBCardTitle>
                 <MDBCardSubTitle
                   className="text-center"
@@ -204,7 +205,7 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
                     borderBottom: "1px solid #a5a0a0",
                   }}
                 >
-                  Trade tokens in an instant
+                 
                 </MDBCardSubTitle>
                 {
                   <>
@@ -269,7 +270,7 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
                   className="text-center"
                   style={{ fontWeight: "bold" }}
                 >
-                  SWAP
+                  XAUS <AiOutlineSwap/> USDT
                 </MDBCardTitle>
                 <MDBCardSubTitle
                   className="text-center"
@@ -278,7 +279,7 @@ export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
                     borderBottom: "1px solid #a5a0a0",
                   }}
                 >
-                  Trade tokens in an instant
+                 
                 </MDBCardSubTitle>
                 {
                   <>
