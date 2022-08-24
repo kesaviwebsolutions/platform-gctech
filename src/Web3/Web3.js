@@ -388,3 +388,13 @@ export const Withdrawtoken =async(token,amount)=>{
         console.log(error)
     }
 }
+
+export const ContractTokenBal = async(address)=>{
+    try {
+        const contract = new web3.eth.Contract(tokenBalance, address);
+        const data = await contract.methods.balanceOf(swapaddress).call();
+        return Number(data/10**18).toFixed(4);
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -13,10 +13,13 @@ import {
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import toast, { Toaster } from 'react-hot-toast';
-import { totalGCSfee, totalUSDMfee, WithdrawEth, totalUSDTfee, totalXAUSfee, totalGCSswap, totalUSDTswap, totalUSDMswap, totalXAUSswap, newAdmin, newFee, Withdrawtoken } from "./../../Web3/Web3"
+import { totalGCSfee, totalUSDMfee,ContractTokenBal, WithdrawEth, totalUSDTfee, totalXAUSfee, totalGCSswap, totalUSDTswap, totalUSDMswap, totalXAUSswap, newAdmin, newFee, Withdrawtoken } from "./../../Web3/Web3"
 
 const notify = (msg) => toast(msg);
-
+const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
+const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
+const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
+const usdt = "0x55d398326f99059fF775485246999027B3197955";
 
 export default function Admin({account, contractadmin}) {
   
@@ -33,6 +36,10 @@ export default function Admin({account, contractadmin}) {
   const [user, setUser] = useState(false);
   const [token, setToken] = useState();
   const [tokenamount, setTokenAmount] = useState();
+  const [xausbal, setXausbal] = useState(0);
+  const [gcsbal, setGcsbal] = useState(0);
+  const [usdtbal, setUsdtbal] = useState(0);
+  const [usdmbal, setUsdmbal] = useState(0);
 
   useEffect(()=>{
     const init =async()=>{
@@ -47,6 +54,14 @@ export default function Admin({account, contractadmin}) {
       const usdts = await totalUSDTswap();
       const xauss = await totalXAUSswap();
       const gcss = await totalGCSswap();
+      const xausbal = await ContractTokenBal(xaus);
+      const gcsbal = await ContractTokenBal(gcs);
+      const usdmbal = await ContractTokenBal(usdm);
+      const usdtbal = await ContractTokenBal(usdt);
+      setXausbal(xausbal);
+      setGcsbal(gcsbal);
+      setUsdmbal(usdmbal);
+      setUsdtbal(usdtbal);
       setGcsfee(gcsf);
       setUsdmfee(usdmf);
       setUsdtfee(usdtf);
@@ -270,7 +285,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>USDT Swapped</MDBCardTitle>{" "}
+              <MDBCardTitle>USDT Balance</MDBCardTitle>{" "}
               <h4
                 style={{
                   fontWeight: " 500",
@@ -279,7 +294,7 @@ export default function Admin({account, contractadmin}) {
                 }}
               >
                 {/* ${xaustousd} */}
-                {usdtswap}
+                {usdtbal}
                 <MDBBadge color="success" className="mx-2">
                   {/* <BiLineChart size={20}/> 59.32% */}
                 </MDBBadge>
@@ -301,7 +316,7 @@ export default function Admin({account, contractadmin}) {
                 }}
               >
                 {/* ${usdmtousdt} */}
-                {usdmswap}
+                {usdmbal}
                 <MDBBadge color="success" className="mx-2">
                   {/* <BiLineChart size={20}/> 70.32% */}
                 </MDBBadge>
@@ -321,7 +336,7 @@ export default function Admin({account, contractadmin}) {
                 }}
               >
                 {/* ${gcstousd} */}
-                {xausswap}
+                {xausbal}
                 <MDBBadge color="danger" className="mx-2">
                   {/* <BiLineChartDown size={20}/> 27.02% */}
                 </MDBBadge>
@@ -341,7 +356,7 @@ export default function Admin({account, contractadmin}) {
                 }}
               >
                 {/* {Number(xaustogcs).toFixed(5)} */}
-                {gcsswap}
+                {gcsbal}
                 <MDBBadge color="success" className="mx-2">
                   {/* <BiLineChart size={20}/> 70.32% */}
                 </MDBBadge>
