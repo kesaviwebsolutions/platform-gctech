@@ -13,6 +13,7 @@ import {
 } from "mdb-react-ui-kit";
 import meta from "../images/meta.png";
 import connect from "../images/connect.svg";
+import logo from "../images/e2bc39a2d59c627c24ff83406d75d1a6.png";
 import { getAdmin } from "../Web3/Web3";
 
 export default function App({ Metamask, account, contractadmin }) {
@@ -28,7 +29,7 @@ export default function App({ Metamask, account, contractadmin }) {
   return (
     <MDBNavbar expand="lg" light bgColor="transparent">
       <MDBContainer fluid>
-        <MDBNavbarBrand href="#">Brand</MDBNavbarBrand>
+        <MDBNavbarBrand href="#"><img src={logo} style={{ width: "90px"}}/></MDBNavbarBrand>
 
         <MDBNavbarToggler
           aria-controls="navbarSupportedContent"

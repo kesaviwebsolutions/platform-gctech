@@ -98,7 +98,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total GCS Fee Collected</MDBCardTitle>
+              <MDBCardTitle>GCS Fee Collected</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -117,7 +117,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total XAUS Fee Collected</MDBCardTitle>{" "}
+              <MDBCardTitle>XAUS Fee Collected</MDBCardTitle>{" "}
               <h4
                 style={{
                   fontWeight: " 500",
@@ -137,7 +137,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total USDM Fee Collected</MDBCardTitle>
+              <MDBCardTitle>USDM Fee Collected</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -157,7 +157,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total USDT Fee Collected</MDBCardTitle>
+              <MDBCardTitle>USDT Fee Collected</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -183,7 +183,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total USDT Swap</MDBCardTitle>{" "}
+              <MDBCardTitle>USDT Swapped</MDBCardTitle>{" "}
               <h4
                 style={{
                   fontWeight: " 500",
@@ -203,7 +203,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total USDM Swap</MDBCardTitle>
+              <MDBCardTitle>USDM Swapped</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -223,7 +223,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total XAUS Swap</MDBCardTitle>
+              <MDBCardTitle>XAUS Swapped</MDBCardTitle>
               <h4
                 style={{
                   fontWeight: " 500",
@@ -243,7 +243,7 @@ export default function Admin({account, contractadmin}) {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <MDBCard>
             <MDBCardBody>
-              <MDBCardTitle>Total GCS Swap</MDBCardTitle>{" "}
+              <MDBCardTitle>GCS Swapped</MDBCardTitle>{" "}
               <h4
                 style={{
                   fontWeight: " 500",
@@ -262,7 +262,7 @@ export default function Admin({account, contractadmin}) {
         </Grid>
       </Grid>
 
-      {account != contractadmin ? <Grid container spacing={2}>
+      {account == contractadmin ? <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={6} xl={6}>
           <MDBCard className="my-5 mx-3">
             <MDBCardBody>
