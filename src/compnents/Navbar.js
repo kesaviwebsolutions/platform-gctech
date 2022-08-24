@@ -15,6 +15,7 @@ import meta from "../images/meta.png";
 import connect from "../images/connect.svg";
 import logo from "../images/e2bc39a2d59c627c24ff83406d75d1a6.png";
 import { getAdmin } from "../Web3/Web3";
+import { Link } from "react-router-dom";
 
 export default function App({ Metamask, account, contractadmin }) {
   const [showBasic, setShowBasic] = useState(false);
@@ -29,7 +30,9 @@ export default function App({ Metamask, account, contractadmin }) {
   return (
     <MDBNavbar expand="lg" light bgColor="transparent">
       <MDBContainer fluid>
-        <MDBNavbarBrand href="#"><img src={logo} style={{ width: "90px"}}/></MDBNavbarBrand>
+        <MDBNavbarBrand href="#">
+          <img src={logo} style={{ width: "90px" }} />
+        </MDBNavbarBrand>
 
         <MDBNavbarToggler
           aria-controls="navbarSupportedContent"
@@ -42,33 +45,57 @@ export default function App({ Metamask, account, contractadmin }) {
 
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0 justify-content-center">
-            <MDBNavbarItem onClick={() => setActive(1)}>
+            {/* <MDBNavbarItem onClick={() => setActive(1)}>
               <MDBNavbarLink
                 aria-current="page"
                 href="/"
-                className={window.location.pathname == '/' ? "active" : ""}
+                className={window.location.pathname == "/" ? "active" : ""}
               >
                 HOME
               </MDBNavbarLink>
-            </MDBNavbarItem>
+            </MDBNavbarItem> */}
+            <Link
+              id="link"
+              onClick={() => setActive(1)}
+              to="/"
+              className={window.location.pathname === "/" ? "active" : ""}
+            >
+              Home
+            </Link>
             {/* <MDBNavbarItem onClick={() => setActive(2)}>
               <MDBNavbarLink href="/" className={active === 2 ? "active" : ""}>
                 STAKING
               </MDBNavbarLink>
             </MDBNavbarItem> */}
 
-           {account == contractadmin || account == "0xD9E0f712652589584B035Db1cb44A79F2eA2389F" || account == "0x149b65e2EB31c196F9C2407E0A88a9cF1F71bd35" || account == "0xd1Ffbe730B63F482959b8535543A84eB268Df53c" ? <MDBNavbarItem
-              onClick={() => {
-                setActive(3);
-              }}
-            >
-              <MDBNavbarLink
+            {account == contractadmin ||
+            account == "0xD9E0f712652589584B035Db1cb44A79F2eA2389F" ||
+            account == "0x149b65e2EB31c196F9C2407E0A88a9cF1F71bd35" ||
+            account == "0xdBd21416Da1207Bfb66BDf3baBE16538f112b706" ? (
+              <MDBNavbarItem
+                onClick={() => {
+                  setActive(2);
+                }}
+              >
+                <Link
+                  id="link"
+                  to="/admin"
+                  className={
+                    window.location.pathname === "/admin" ? "active" : ""
+                  }
+                >
+                  ADMIN
+                </Link>
+                {/* <MDBNavbarLink
                 href="/admin"
                 className={window.location.pathname == '/admin' ? "active" : ""}
               >
                 ADMIN
-              </MDBNavbarLink>
-            </MDBNavbarItem> : ''}
+              </MDBNavbarLink> */}
+              </MDBNavbarItem>
+            ) : (
+              ""
+            )}
           </MDBNavbarNav>
           <button
             type="button"

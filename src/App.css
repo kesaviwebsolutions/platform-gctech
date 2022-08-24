@@ -3,7 +3,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-button.connectButton{
+button.connectButton {
   width: 150px;
   padding: 10px 10px;
   border: none;
@@ -25,8 +25,13 @@ ul.dropdown-menu.disconnect {
   text-align: center;
   font-weight: 500;
 }
-a.nav-link.active.active {
+a.active {
+  color: #8d00ff;
   font-weight: 500;
+}
+a#link {
+  margin-left: 20px;
+  color: black;
 }
 .max-button {
   position: absolute;
