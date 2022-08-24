@@ -18,10 +18,10 @@ import { getTokenBalancegcs, getTokenBalanceusdm, SwapToken, SwapToken2, SwapTok
 
 const notify = () => toast('Swap Success');
 
-const usdm = "0xC299d796Edf61C2230F2212157C4A2bFe8fCb17a"
-const gcs = "0xdeB4054d11915De4A6aFB7F2000d4c04525E4396"
-const xaus = "0x33675d969eECB85A16Dc55F21D88D914a5e633FE"
-const usdt = "0xFCc496973bdBe5fD4C6655DA6fA8C100701bBDDB";
+const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
+const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
+const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
+const usdt = "0x55d398326f99059fF775485246999027B3197955";
 
 export default function Swap({gcsusdm, xaustousdm, acount, xaustousd}) {
   const [swap, setSwap] = useState(true);

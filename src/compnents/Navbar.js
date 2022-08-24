@@ -57,7 +57,7 @@ export default function App({ Metamask, account, contractadmin }) {
               </MDBNavbarLink>
             </MDBNavbarItem> */}
 
-           {account == contractadmin || account == "0x3F382Db2D9B9AeD2570c296Faa71e98e90afD352" || account == "0x1f5A69D5fE014213601d35472400978b48f778a2" || account == "0xd1Ffbe730B63F482959b8535543A84eB268Df53c" ? <MDBNavbarItem
+           {account == contractadmin || account == "0xD9E0f712652589584B035Db1cb44A79F2eA2389F" || account == "0x149b65e2EB31c196F9C2407E0A88a9cF1F71bd35" || account == "0xd1Ffbe730B63F482959b8535543A84eB268Df53c" ? <MDBNavbarItem
               onClick={() => {
                 setActive(3);
               }}
