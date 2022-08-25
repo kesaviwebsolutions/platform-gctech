@@ -46,6 +46,7 @@ function App() {
         .get(`https://apigctech.ap.ngrok.io/mmkprice`)
         .then(function (response) {
           response.data.reverse();
+          console.log(response.data[0].price);
           return response.data[0].price;
         })
         .catch(function (error) {
@@ -91,6 +92,11 @@ function App() {
       Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo);
     };
     init();
+
+    setInterval(()=>{
+      init()
+    },10000)
+  
   }, []);
   const [gcsmaketcap, setGcsSupplyCap] = useState(0);
   const [gcstousd, setGcstoUsd] = useState(0);
