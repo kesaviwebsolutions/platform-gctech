@@ -33,7 +33,7 @@ export default function Main({
           <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
-                <MDBCardTitle>GSC Market Cap</MDBCardTitle>
+                <MDBCardTitle>GCS Market Cap</MDBCardTitle>
                 <h4
                   style={{
                     fontWeight: " 500",
@@ -116,7 +116,7 @@ export default function Main({
           <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
-                <MDBCardTitle>XAUS TO USD</MDBCardTitle>{" "}
+                <MDBCardTitle>XAUS TO USDT</MDBCardTitle>{" "}
                 <h4
                   style={{
                     fontWeight: " 500",
@@ -135,7 +135,7 @@ export default function Main({
           <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
-                <MDBCardTitle>USDM TO USD</MDBCardTitle>
+                <MDBCardTitle>USDM TO USDT</MDBCardTitle>
                 <h4
                   style={{
                     fontWeight: " 500",
@@ -154,7 +154,7 @@ export default function Main({
           <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <MDBCard>
               <MDBCardBody>
-                <MDBCardTitle>GSC TO USD</MDBCardTitle>
+                <MDBCardTitle>GCS TO USDT</MDBCardTitle>
                 <h4
                   style={{
                     fontWeight: " 500",
