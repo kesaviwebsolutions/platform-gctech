@@ -33,10 +33,9 @@ function App() {
       const user = await getAdmin();
       setContractAdmin(user);
 
-      const closeprice = await axios
-        .get("https://sapi.gcex.lt/v1/market/tickers", {})
+      const closeprice = await axios.get("https://close.ap.ngrok.io/kws/v4/closeprice", {})
         .then(function (response) {
-          return Number(response.data.data["GCS/USDT"].close);
+          return Number(response.data[0].GCStoUSDT);
         })
         .catch(function (error) {
           console.log(error);
