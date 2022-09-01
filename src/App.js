@@ -15,6 +15,7 @@ import Footer from "./compnents/Footer";
 import Admin from "./compnents/pages/Admin";
 import Home from "./compnents/pages/Home";
 import "./App.css";
+const url = 'https://apigctech.ap.ngrok.io'
 
 function App() {
   const [xausSupply, setXausSupply] = useState(0);
@@ -88,7 +89,13 @@ function App() {
         return Number(response.data.info.rate).toFixed(5);
       });
 
-      Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo);
+      const added = await axios.get(`${url}/values`).then(function (response) {
+        return response.data[0].addMMk})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added);
     };
     init();
 
@@ -107,12 +114,12 @@ function App() {
   const [xaustogcs, setXausGcs] = useState(0);
   const [xaustousdm, setXaustousdm] = useState(0);
 
-  const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo) => {
+  const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added) => {
     const gcsmk = (Number(closeprice) * 5000000).toFixed(0);
     setGcsSupplyCap(gcsmk);
     const gcstousd = closeprice;
     setGcstoUsd(closeprice);
-    const gcsusdm = (mmk * closeprice) / govt;
+    const gcsusdm = ((mmk+added) * closeprice) / govt;
     setGcsusdm(gcsusdm);
     const xaustousd = ((xau / 31.1025) * 0.425 * 1.03).toFixed(5);
     setXaustoUsd(xaustousd);
