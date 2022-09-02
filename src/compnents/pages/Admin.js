@@ -3,19 +3,29 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBCardText,
-  MDBBtn,
   MDBBadge,
   MDBInput,
-  MDBTable,
-  MDBTableHead,
-  MDBTableBody,
-  MDBIcon,
   MDBCardSubTitle,
 } from "mdb-react-ui-kit";
-import { Container, Grid, Typography } from "@mui/material";
+
+import {
+  Container,
+  Grid,
+  Typography,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
+
 import { Box } from "@mui/system";
+
 import toast, { Toaster } from "react-hot-toast";
+
 import {
   totalGCSfee,
   totalUSDMfee,
@@ -30,8 +40,10 @@ import {
   newAdmin,
   newFee,
   Withdrawtoken,
-} from "./../../Web3/Web3";
+} from "../../Web3/Web3";
+
 import { Button } from "@material-ui/core";
+import StakingTable from "../StakingTable.tsx";
 
 const notify = (msg) => toast(msg);
 const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc";
@@ -57,6 +69,8 @@ export default function Admin({ account, contractadmin }) {
   const [gcsbal, setGcsbal] = useState(0);
   const [usdtbal, setUsdtbal] = useState(0);
   const [usdmbal, setUsdmbal] = useState(0);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   useEffect(() => {
     const init = async () => {
@@ -536,161 +550,7 @@ export default function Admin({ account, contractadmin }) {
         )}
         <Toaster />
       </Container>
-      :
-      {/*.......................... ADMIN TABLE.................................. */}
-      <Container maxWidth="lg">
-        <MDBTable align="middle">
-          <MDBTableHead>
-            <tr>
-              <th scope="col">Add level</th>
-              <th scope="col">Name of the level</th>
-              <th scope="col">Bonus of the percentage</th>
-              <th scope="col">APY</th>
-              <th scope="col">Level Name</th>
-              <th scope="col">Level Bonus</th>
-              <th scope="col">No. of referrals</th>
-            </tr>
-          </MDBTableHead>
-          <MDBTableBody>
-            <tr>
-              <td>
-                <div className="d-flex align-items-center">
-                  <img
-                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                    alt=""
-                    style={{ width: "45px", height: "45px" }}
-                    className="rounded-circle"
-                  />
-                  <div className="ms-3">
-                    <p className="fw-bold mb-1">John Doe</p>
-                    <p className="text-muted mb-0">john.doe@gmail.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="fw-normal mb-1">Software engineer</p>
-                <p className="text-muted mb-0">IT department</p>
-              </td>
-              <td>
-                <MDBBadge color="success" pill>
-                  Active
-                </MDBBadge>
-              </td>
-              <td>Senior</td>
-              <td>
-                <MDBBtn color="link" rounded size="sm">
-                  Edit
-                </MDBBtn>
-              </td>
-              <td>
-                <MDBBtn color="link" rounded size="sm">
-                  Edit
-                </MDBBtn>
-              </td>
-              <td>
-                <MDBBtn color="link" rounded size="sm">
-                  Edit
-                </MDBBtn>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="d-flex align-items-center">
-                  <img
-                    src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-                    alt=""
-                    style={{ width: "45px", height: "45px" }}
-                    className="rounded-circle"
-                  />
-                  <div className="ms-3">
-                    <p className="fw-bold mb-1">Alex Ray</p>
-                    <p className="text-muted mb-0">alex.ray@gmail.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="fw-normal mb-1">Consultant</p>
-                <p className="text-muted mb-0">Finance</p>
-              </td>
-              <td>
-                <MDBBadge color="primary" pill>
-                  Onboarding
-                </MDBBadge>
-              </td>
-              <td>Junior</td>
-              <td>
-                <MDBBtn color="link" rounded size="sm">
-                  Edit
-                </MDBBtn>
-              </td>
-              <td>
-                <MDBBtn color="link" rounded size="sm">
-                  Edit
-                </MDBBtn>
-              </td>
-              <td>
-                <MDBBtn color="link" rounded size="sm">
-                  Edit
-                </MDBBtn>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="d-flex align-items-center">
-                  <img
-                    src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-                    alt=""
-                    style={{ width: "45px", height: "45px" }}
-                    className="rounded-circle"
-                  />
-                  <div className="ms-3">
-                    <p className="fw-bold mb-1">Kate Hunington</p>
-                    <p className="text-muted mb-0">kate.hunington@gmail.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="fw-normal mb-1">Designer</p>
-                <p className="text-muted mb-0">UI/UX</p>
-              </td>
-              <td>
-                <MDBBadge color="warning" pill>
-                  Awaiting
-                </MDBBadge>
-              </td>
-              <td>Senior</td>
-              <td>
-                <MDBBtn color="link" rounded size="sm">
-                  Edit
-                </MDBBtn>
-              </td>
-              <td>
-                <MDBBadge color="warning" pill>
-                  Awaiting
-                </MDBBadge>
-              </td>
-              <td>
-                <MDBBadge color="warning" pill>
-                  Awaiting
-                </MDBBadge>
-              </td>
-            </tr>
-          </MDBTableBody>
-        </MDBTable>
-        <Button
-          variant="contained"
-          style={{
-            display: "block",
-            margin: " 20px auto",
-            width: "100%",
-            background: "#F144EC",
-            color: "#fff",
-            textAlign: "center",
-          }}
-        >
-          Pay Bonus
-        </Button>
-      </Container>
+      <StakingTable />:
     </>
   );
 }

@@ -85,12 +85,12 @@ export default function App({ Metamask, account, contractadmin }) {
                 <Link
                   id="link"
                   onClick={() => setActive(3)}
-                  to="/staking"
+                  to="/create-level"
                   className={
                     window.location.pathname === "/staking" ? "active" : ""
                   }
                 >
-                  STAKING
+                  CREATE LEVEL
                 </Link>
                 {/* <MDBNavbarLink
 =======

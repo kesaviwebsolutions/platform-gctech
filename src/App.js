@@ -15,7 +15,7 @@ import Footer from "./compnents/Footer";
 import Admin from "./compnents/pages/Admin";
 import Home from "./compnents/pages/Home";
 import "./App.css";
-import Staking from "./compnents/pages/Staking";
+import CreateLevel from "./compnents/pages/CreateLevel";
 const url = "https://apigctech.ap.ngrok.io";
 
 function App() {
@@ -248,7 +248,7 @@ function App() {
             path="/admin"
             element={<Admin account={acount} contractadmin={contractadmin} />}
           />
-          <Route path="/staking" element={<Staking />} />
+          <Route path="/create-level" element={<CreateLevel />} />
         </Routes>
         <Footer />
       </Router>
