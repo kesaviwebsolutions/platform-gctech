@@ -1,6 +1,9 @@
 import * as React from "react";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Container } from "@mui/system";
+import { Box, Typography } from "@mui/material";
+
+//.......STAKER'S DETAIL..........
 
 const columns: GridColDef[] = [
   { field: "sno", headerName: "SNO.", width: 70 },
@@ -113,6 +116,8 @@ const columns: GridColDef[] = [
       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
   },
 ];
+
+// .......REFFER DETAILS...........
 
 const columns2: GridColDef[] = [
   { field: "sno", headerName: "SNO.", width: 70 },
@@ -232,6 +237,9 @@ export default function StakingTable() {
   return (
     <>
       <Container maxWidth="lg">
+        <Box style={{ width: "100%", marginTop: "50px" }}>
+          <Typography variant="h4">Staker's Detail</Typography>
+        </Box>
         <div style={{ height: 400, width: "100%", marginTop: "50px" }}>
           <DataGrid
             rows={rows}
@@ -243,6 +251,9 @@ export default function StakingTable() {
         </div>
       </Container>
       <Container maxWidth="lg">
+        <Box style={{ width: "100%", marginTop: "50px" }}>
+          <Typography variant="h4">Referrer Detail</Typography>
+        </Box>
         <div style={{ height: 400, width: "100%", marginTop: "50px" }}>
           <DataGrid
             rows={rows2}
