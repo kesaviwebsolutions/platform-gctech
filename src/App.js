@@ -8,14 +8,15 @@ import {
   login,
   GetChainId,
   getUserAddress,
-  getAdmin
+  getAdmin,
 } from "./Web3/Web3";
 import axios from "axios";
 import Footer from "./compnents/Footer";
 import Admin from "./compnents/pages/Admin";
 import Home from "./compnents/pages/Home";
 import "./App.css";
-const url = 'https://apigctech.ap.ngrok.io'
+import Staking from "./compnents/pages/Staking";
+const url = "https://apigctech.ap.ngrok.io";
 
 function App() {
   const [xausSupply, setXausSupply] = useState(0);
@@ -34,7 +35,8 @@ function App() {
       const user = await getAdmin();
       setContractAdmin(user);
 
-      const closeprice = await axios.get("https://close.ap.ngrok.io/kws/v4/closeprice", {})
+      const closeprice = await axios
+        .get("https://close.ap.ngrok.io/kws/v4/closeprice", {})
         .then(function (response) {
           return Number(response.data[0].GCStoUSDT);
         })
@@ -89,20 +91,22 @@ function App() {
         return Number(response.data.info.rate).toFixed(5);
       });
 
-      const added = await axios.get(`${url}/values`).then(function (response) {
-        return response.data[0].addMMk})
-      .catch(function (error) {
-        console.log(error);
-      });
+      const added = await axios
+        .get(`${url}/values`)
+        .then(function (response) {
+          return response.data[0].addMMk;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
       Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added);
     };
     init();
 
-    setInterval(()=>{
-      init()
-    },10000)
-  
+    setInterval(() => {
+      init();
+    }, 10000);
   }, []);
   const [gcsmaketcap, setGcsSupplyCap] = useState(0);
   const [gcstousd, setGcstoUsd] = useState(0);
@@ -114,12 +118,22 @@ function App() {
   const [xaustogcs, setXausGcs] = useState(0);
   const [xaustousdm, setXaustousdm] = useState(0);
 
-  const Calculation = (xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added) => {
+  const Calculation = (
+    xaus,
+    gcs,
+    usdm,
+    closeprice,
+    mmk,
+    govt,
+    xau,
+    btwo,
+    added
+  ) => {
     const gcsmk = (Number(closeprice) * 5000000).toFixed(0);
     setGcsSupplyCap(gcsmk);
     const gcstousd = closeprice;
     setGcstoUsd(closeprice);
-    const gcsusdm = ((mmk+added) * closeprice) / govt;
+    const gcsusdm = ((mmk + added) * closeprice) / govt;
     setGcsusdm(gcsusdm);
     const xaustousd = ((xau / 31.1025) * 0.425 * 1.03).toFixed(5);
     setXaustoUsd(xaustousd);
@@ -192,7 +206,11 @@ function App() {
       <Footer/>
 ======= */}
       <Router>
-        <Navbar Metamask={Metamask} account={acount} contractadmin={contractadmin} />
+        <Navbar
+          Metamask={Metamask}
+          account={acount}
+          contractadmin={contractadmin}
+        />
         {/* <Main
           gcsmaketcap={gcsmaketcap}
           gcstousd={gcstousd}
@@ -208,19 +226,29 @@ function App() {
         <Swap gcsusdm={gcsusdm} xaustousdm={xaustousdm} account={acount} xaustousd={xaustousd} /> */}
 
         <Routes>
-          <Route exact path="/" element={<Home 
-          gcsmaketcap={gcsmaketcap}
-          gcstousd={gcstousd}
-          gcsusdm={gcsusdm}
-          xaustousd={xaustousd}
-          xausmk={xausmk}
-          usdmtousdt={usdmtousdt}
-          usdmmarketcap={usdmmarketcap}
-          xaustogcs={xaustogcs}
-          xaustousdm={xaustousdm}
-          account={acount}
-          />} />
-          <Route path="/admin" element={<Admin account={acount} contractadmin={contractadmin}/>} />
+          <Route
+            exact
+            path="/"
+            element={
+              <Home
+                gcsmaketcap={gcsmaketcap}
+                gcstousd={gcstousd}
+                gcsusdm={gcsusdm}
+                xaustousd={xaustousd}
+                xausmk={xausmk}
+                usdmtousdt={usdmtousdt}
+                usdmmarketcap={usdmmarketcap}
+                xaustogcs={xaustogcs}
+                xaustousdm={xaustousdm}
+                account={acount}
+              />
+            }
+          />
+          <Route
+            path="/admin"
+            element={<Admin account={acount} contractadmin={contractadmin} />}
+          />
+          <Route path="/staking" element={<Staking />} />
         </Routes>
         <Footer />
       </Router>
