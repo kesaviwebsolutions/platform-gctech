@@ -15,7 +15,7 @@ import Footer from "./compnents/Footer";
 import Admin from "./compnents/pages/Admin";
 import Home from "./compnents/pages/Home";
 import "./App.css";
-import CreateLevel from "./compnents/pages/CreateLevel";
+import CreateLevel from "./compnents/pages/CreateLevel.tsx";
 const url = "https://apigctech.ap.ngrok.io";
 
 function App() {
