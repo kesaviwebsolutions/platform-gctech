@@ -147,7 +147,7 @@ function App() {
     setUsdmMarketcap(usdmmk);
     const xaustogcs = (((xau / 31.1025) * 0.425 * 1.03) / gcstousd).toFixed(5);
     setXausGcs(xaustogcs);
-    const xaustousdm = Number(xaustousd / usdmtousdt).toFixed(5);
+    const xaustousdm = Number(((xau / 31.1025) * 0.425 * 1.03)/(3 / btwo)).toFixed(5)
     setXaustousdm(xaustousdm);
   };
 
