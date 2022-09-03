@@ -101,12 +101,13 @@ function App() {
         });
 
       Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added);
+      console.log(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added);
     };
     init();
 
     setInterval(() => {
       init();
-    }, 10000);
+    }, 5000);
   }, []);
   const [gcsmaketcap, setGcsSupplyCap] = useState(0);
   const [gcstousd, setGcstoUsd] = useState(0);
