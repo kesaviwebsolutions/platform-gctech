@@ -48,7 +48,7 @@ import StakingTable from "../StakingTable.tsx";
 const notify = (msg) => toast(msg);
 const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc";
 const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd";
-const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27";
+const xaus = "0x50ea0dffe399a706edc310f55c658e8b0ec27981";
 const usdt = "0x55d398326f99059fF775485246999027B3197955";
 
 export default function Admin({ account, contractadmin }) {
