@@ -101,7 +101,7 @@ function App() {
         });
 
       Calculation(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added);
-      console.log(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added);
+      // console.log(xaus, gcs, usdm, closeprice, mmk, govt, xau, btwo, added);
     };
     init();
 

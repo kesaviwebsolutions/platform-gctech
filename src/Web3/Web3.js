@@ -348,10 +348,10 @@ export const newAdmin =async(address)=>{
     }
 }
 
-export const newFee =async(fee)=>{
+export const newFee =async(gcsfees,usdmfees,xausfees)=>{
     try {
         const contract = new web3.eth.Contract(swapabi, swapaddress);
-        const data = await contract.methods.setFees(fee).send({from:await getUserAddress()});
+        const data = await contract.methods.setFees(gcsfees,usdmfees,xausfees).send({from:await getUserAddress()});
         return data;
     } catch (error) {
         console.log(error)

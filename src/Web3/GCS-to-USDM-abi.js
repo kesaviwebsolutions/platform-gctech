@@ -1,4 +1,4 @@
-export const swapaddress = "0x683533680B1AE6DcAc447965D28Fe6429F3AacA0";
+export const swapaddress = "0xc477C5bbc7b58AD9C48DC3c2B7720424d88d5EF4";
 
 export const tokenBalance = [
   {
@@ -197,7 +197,7 @@ export const tokenBalance = [
 export const swapabi = [
   {
     inputs: [],
-    name: "recoverLostETH",
+    name: "recoverBNB",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -219,7 +219,17 @@ export const swapabi = [
     inputs: [
       {
         internalType: "uint8",
-        name: "_Fees",
+        name: "_val1",
+        type: "uint8",
+      },
+      {
+        internalType: "uint8",
+        name: "_val2",
+        type: "uint8",
+      },
+      {
+        internalType: "uint8",
+        name: "_val3",
         type: "uint8",
       },
     ],
@@ -289,7 +299,7 @@ export const swapabi = [
       },
       {
         internalType: "uint256",
-        name: "_ratioGCSUSDM",
+        name: "_updatedBlockVal",
         type: "uint256",
       },
     ],
@@ -313,7 +323,7 @@ export const swapabi = [
       },
       {
         internalType: "uint256",
-        name: "_ratioUSDMGCS",
+        name: "_updatedBlockVal",
         type: "uint256",
       },
     ],
@@ -337,7 +347,7 @@ export const swapabi = [
       },
       {
         internalType: "uint256",
-        name: "_ratioUSDMXAUS",
+        name: "_updatedBlockVal",
         type: "uint256",
       },
     ],
@@ -361,7 +371,7 @@ export const swapabi = [
       },
       {
         internalType: "uint256",
-        name: "_ratioUSDTXAUS",
+        name: "_updatedBlockVal",
         type: "uint256",
       },
     ],
@@ -385,7 +395,7 @@ export const swapabi = [
       },
       {
         internalType: "uint256",
-        name: "_ratioXAUSUSDM",
+        name: "_updatedBlockVal",
         type: "uint256",
       },
     ],
@@ -409,7 +419,7 @@ export const swapabi = [
       },
       {
         internalType: "uint256",
-        name: "_ratioXAUSUSDT",
+        name: "_updatedBlockVal",
         type: "uint256",
       },
     ],
@@ -483,19 +493,6 @@ export const swapabi = [
   },
   {
     inputs: [],
-    name: "fees",
-    outputs: [
-      {
-        internalType: "uint8",
-        name: "",
-        type: "uint8",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "feesCollectedGCS",
     outputs: [
       {
@@ -541,6 +538,45 @@ export const swapabi = [
         internalType: "uint256",
         name: "",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "feesGCSTOUSDM",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "feesUSDMTOXAUS",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "feesXAUSTOUSDT",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
       },
     ],
     stateMutability: "view",

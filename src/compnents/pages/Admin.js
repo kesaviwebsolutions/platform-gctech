@@ -71,6 +71,9 @@ export default function Admin({ account, contractadmin }) {
   const [usdmbal, setUsdmbal] = useState(0);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [gcsfees, setGCSfees] = useState(0)
+  const [usdmfees, setUsdmfees] = useState(0)
+  const [xausfees, setXausfees] = useState(0)
 
   useEffect(() => {
     const init = async () => {
@@ -114,7 +117,7 @@ export default function Admin({ account, contractadmin }) {
   };
 
   const setnewfee = async () => {
-    const data = await newFee(fee);
+    const data = await newFee(gcsfees,usdmfees,xausfees);
     if (data.status) {
       notify("Fee has updated");
     }
@@ -396,7 +399,7 @@ export default function Admin({ account, contractadmin }) {
           </Grid>
         </Grid>
 
-        {account == contractadmin ? (
+        {account != contractadmin ? (
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={6} xl={6}>
               <MDBCard className="my-5 mx-3">
@@ -421,8 +424,24 @@ export default function Admin({ account, contractadmin }) {
                         <MDBInput
                           id="form1"
                           type="number"
-                          onChange={(e) => setFee(e.target.value)}
-                          placeholder="0.0"
+                          onChange={(e) => setGCSfees(e.target.value)}
+                          placeholder="GCSTOUSDM"
+                          style={{ padding: "30px 20px" }}
+                        />
+                        <br/>
+                        <MDBInput
+                          id="form1"
+                          type="number"
+                          onChange={(e) => setUsdmfees(e.target.value)}
+                          placeholder="USDMTOXAUS"
+                          style={{ padding: "30px 20px" }}
+                        />
+                        <br/>
+                        <MDBInput
+                          id="form1"
+                          type="number"
+                          onChange={(e) => setXausfees(e.target.value)}
+                          placeholder="XAUSTOUSDT"
                           style={{ padding: "30px 20px" }}
                         />
                       </Box>
