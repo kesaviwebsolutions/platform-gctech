@@ -155,7 +155,7 @@ export default function Admin({ account, contractadmin }) {
                     fontSize: "20px",
                   }}
                 >
-                  {gcsfee}
+                  {9.084454 + Number(gcsfee)}
                   <MDBBadge color="success" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 70.32% */}
                   </MDBBadge>
@@ -175,7 +175,7 @@ export default function Admin({ account, contractadmin }) {
                   }}
                 >
                   {/* ${Number(usdmmarketcap).toFixed(0)} */}
-                  {xausfee}
+                  {0.026646 + Number(xausfee)}
                   <MDBBadge color="danger" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 27.02% */}
                   </MDBBadge>
@@ -195,7 +195,7 @@ export default function Admin({ account, contractadmin }) {
                   }}
                 >
                   {/* ${xausmk} */}
-                  {usdmfee}
+                  {3.757057 + Number(usdmfee)}
                   <MDBBadge color="danger" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 9.00% */}
                   </MDBBadge>
@@ -215,7 +215,7 @@ export default function Admin({ account, contractadmin }) {
                   }}
                 >
                   {/* {Number(1 / gcsusdm).toFixed(5)} */}
-                  {usdtfee}
+                  {Number(usdtfee)}
                   <MDBBadge color="success" className="mx-2">
                     {/* <MDBIcon fas icon="chart-line" /> 70.32% */}
                   </MDBBadge>
@@ -241,7 +241,7 @@ export default function Admin({ account, contractadmin }) {
                   }}
                 >
                   {/* ${xaustousd} */}
-                  {usdtswap}
+                  {101 + Number(usdtswap)}
                   <MDBBadge color="success" className="mx-2">
                     {/* <BiLineChart size={20}/> 59.32% */}
                   </MDBBadge>
@@ -261,7 +261,7 @@ export default function Admin({ account, contractadmin }) {
                   }}
                 >
                   {/* ${usdmtousdt} */}
-                  {usdmswap}
+                  {29264 + Number(usdmswap)}
                   <MDBBadge color="success" className="mx-2">
                     {/* <BiLineChart size={20}/> 70.32% */}
                   </MDBBadge>
@@ -281,7 +281,7 @@ export default function Admin({ account, contractadmin }) {
                   }}
                 >
                   {/* ${gcstousd} */}
-                  {xausswap}
+                  { 1 + Number(xausswap)}
                   <MDBBadge color="danger" className="mx-2">
                     {/* <BiLineChartDown size={20}/> 27.02% */}
                   </MDBBadge>
@@ -301,7 +301,7 @@ export default function Admin({ account, contractadmin }) {
                   }}
                 >
                   {/* {Number(xaustogcs).toFixed(5)} */}
-                  {gcsswap}
+                   {31 + Number(gcsswap)}
                   <MDBBadge color="success" className="mx-2">
                     {/* <BiLineChart size={20}/> 70.32% */}
                   </MDBBadge>
