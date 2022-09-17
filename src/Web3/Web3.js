@@ -19,7 +19,7 @@ const abi = [
 ]
 const usdm = "0x08ab7e5c08cc0d78589fc506c35ea9c2520a86bc"
 const gcs = "0x3d2bb1f7ab5d64c3917dbe03d37843421a42e0cd"
-const xaus = "0x66d7ca7c5111f6544a06bbf2c430a1d070d02d27"
+const xaus = "0x50ea0dfFE399A706EdC310f55c658e8B0eC27981"
 
 export const login =async()=> {
     const data = await window.ethereum.enable();
