@@ -399,7 +399,7 @@ export default function Admin({ account, contractadmin }) {
           </Grid>
         </Grid>
 
-        {account != contractadmin ? (
+        {account == contractadmin ? (
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={6} xl={6}>
               <MDBCard className="my-5 mx-3">
