@@ -108,8 +108,11 @@ export const SwapToken = async(tab,amount,ratio,usdm,gcs)=>{
             }
             else{
                 const data2 = await Approve(gcs);
-                const data = await contract.methods.swapGCSTOUSDM(a,r).send({from:await getUserAddress()});
-                return data;
+                if(data2.status){
+                    const data = await contract.methods.swapGCSTOUSDM(a,r).send({from:await getUserAddress()});
+                    return data;
+                }
+               
             }
         }
         else{
@@ -119,9 +122,12 @@ export const SwapToken = async(tab,amount,ratio,usdm,gcs)=>{
               return data;
             }
             else{
-                await Approve(usdm);
-                const data = await contract.methods.swapUSDMTOGCS(a,b).send({from:await getUserAddress()});
-                return data;
+                const rec = await Approve(usdm);
+                if(rec.status){
+                    const data = await contract.methods.swapUSDMTOGCS(a,b).send({from:await getUserAddress()});
+                    return data;
+                }
+                
             }
         }
     } catch (error) {
@@ -147,8 +153,11 @@ export const SwapToken2 = async(tab,amount,ratio,usdm,xaus)=>{
             else{
                 console.log(a,b)
                 const data2 = await Approve(usdm);
-                const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
-                return data;
+                if(data2.status){
+                    const data = await contract.methods.swapUSDMTOXAUS(a,b).send({from:await getUserAddress()});
+                    return data;
+                }
+               
             }
         }
         else{
@@ -160,9 +169,12 @@ export const SwapToken2 = async(tab,amount,ratio,usdm,xaus)=>{
             }
             else{
                 console.log(a,r)
-                await Approve(xaus);
-                const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
-                return data;
+                const rec = await Approve(xaus);
+                if(rec.status){
+                    const data = await contract.methods.swapXAUSTOUSDM(a,r).send({from:await getUserAddress()});
+                    return data;
+                }
+               
             }
         }
     } catch (error) {
@@ -191,12 +203,14 @@ export const SwapToken3 = async(tab,amount,ratio,xaus,usdt)=>{
             else{
                 console.log(a,r)
                 const data2 = await Approve(xaus);
-                const data = await contract.methods.swapXAUSTOUSDT(a,r).send({from:await getUserAddress()});
-                return data;
+                if(data2.status){
+                    const data = await contract.methods.swapXAUSTOUSDT(a,r).send({from:await getUserAddress()});
+                    return data;
+                }
+                
             }
         }
         else{
-            //usdt to xaus
             const isApprove = await Allow(usdt);
             if(Number(isApprove)>0){
                 console.log(a,b,tab)
@@ -205,9 +219,11 @@ export const SwapToken3 = async(tab,amount,ratio,xaus,usdt)=>{
             }
             else{
                 console.log(a,b)
-                await Approve(usdt);
-                const data = await contract.methods.swapUSDTTOXAUS(a,b).send({from:await getUserAddress()});
-                return data;
+                const rec = await Approve(usdt);
+                if(rec.status){
+                    const data = await contract.methods.swapUSDTTOXAUS(a,b).send({from:await getUserAddress()});
+                    return data;
+                }
             }
         }
     } catch (error) {
