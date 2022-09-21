@@ -119,7 +119,7 @@ export default function Admin({ account, contractadmin }) {
   const setnewfee = async () => {
     const data = await newFee(gcsfees,usdmfees,xausfees);
     if (data.status) {
-      notify("Fee has updated");
+      notify("Fee has been updated");
     }
   };
   const reoverEth = async () => {
