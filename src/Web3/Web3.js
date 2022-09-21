@@ -377,7 +377,7 @@ export const newFee =async(gcsfees,usdmfees,xausfees)=>{
 export const getAdmin = async()=>{
     try {
         const contract = new web3.eth.Contract(swapabi, swapaddress);
-        const data = await contract.methods.admin().call();
+        const data = await contract.methods.owner().call();
         return data;
     } catch (error) {
         console.log(error)
