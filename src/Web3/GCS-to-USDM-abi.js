@@ -1,4 +1,4 @@
-export const swapaddress = "0xc477C5bbc7b58AD9C48DC3c2B7720424d88d5EF4";
+export const swapaddress = "0x329DA7F6B6E1ad51AFeA210299A438a380d3610d";
 
 export const tokenBalance = [
   {
